@@ -28,7 +28,6 @@ export default {
 </script>
 <style scoped>
 form {
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,6 +63,7 @@ button {
 .contact-control::selection {
   color: white;
   background-color: black;
+  background: orangered;
 }
 
 .contact-control:focus,
@@ -73,6 +73,9 @@ button {
 }
 
 .contact--control_email {
+  border-bottom: 1px solid #555d50;
+}
+.contact--control_email:focus {
   border-bottom: 1px solid #555d50;
 }
 </style>

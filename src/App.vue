@@ -5,16 +5,10 @@
   </div>
 </template>
 
-<style scoped></style>
-
 <script>
 import TheHeader from "./components/UI/TheHeader.vue";
 export default {
   components: { TheHeader },
-  data() {
-    return {};
-  },
-  methods: {},
 };
 </script>
 <style>
@@ -27,10 +21,7 @@ export default {
   color: #555d50;
 }
 body {
-  /* box-sizing: border-box; */
   font-family: sans-serif;
   background-color: white;
-
-  /* border: 2px solid black; */
 }
 </style>

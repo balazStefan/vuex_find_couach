@@ -6,10 +6,13 @@
   </base-card>
 </template>
 <script>
+import BaseCard from "../../BaseCard.vue";
 import BaseButton from "../../BaseButton.vue";
+
 export default {
   components: {
     BaseButton,
+    BaseCard,
   },
 };
 </script>
@@ -30,6 +33,5 @@ button {
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 5px 20px;
-  /* margin: 10px; */
 }
 </style>

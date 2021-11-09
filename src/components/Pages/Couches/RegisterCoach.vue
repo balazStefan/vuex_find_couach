@@ -158,7 +158,6 @@ textarea::selection {
   background-color: black;
 }
 p {
-  /* border: 1px solid black; */
   align-self: center;
   margin-top: 10px;
 }
@@ -182,8 +181,6 @@ button::before {
   z-index: -1;
   border-left: 2px solid black;
   border-bottom: 2px solid black;
-
-  /* background: red; */
 }
 button::after {
   content: "";
@@ -209,7 +206,6 @@ button:hover::before {
   border-left: 2px solid black;
   border-bottom: 2px solid black;
   animation: hoverbtnbefore 0.5s forwards;
-  /* background: red; */
 }
 button:hover::after {
   content: "";
@@ -248,55 +244,8 @@ button:hover::after {
     top: 0%;
   }
 }
-/* button:hover::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  top: 0%;
-  left: 0%;
-  right: 0%;
-  bottom: 0;
-  z-index: -1;
 
-  /* background-color: orangered; */
-/* outline-style: outset;
-  outline-color: black;
-  outline-offset: 2px; */
-
-/* animation: button_on_hover 0.5s forwards ease-in-out;
-} */
-
-@keyframes button_on_hover {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-    transform: translateX(25%);
-  }
-  40% {
-    opacity: 1;
-    transform: translateX(50%);
-  }
-  55% {
-    transform: translateX(75%);
-    opacity: 1;
-  }
-  60% {
-    transform: translateX(100%);
-    opacity: 1;
-  }
-  75% {
-    transform: translateX(75%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(50%);
-    opacity: 1;
-  }
-}
 .controls {
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;

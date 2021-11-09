@@ -1,28 +1,25 @@
 <template>
-  <div>
-    <!--VISIBILITY -->
-    <base-card>
-      <header>
-        <h3>{{ name }}</h3>
-        <p>{{ money }}€/1h</p>
-      </header>
-      <main>
-        <span v-for="type in types" :key="type" :class="type">{{ type }}</span>
-      </main>
-      <footer>
-        <base-button @click="toggleShow">Details</base-button>
-        <base-button @click="toggleContact">Contact</base-button>
-      </footer>
-      <section v-if="show">{{ description }}</section>
-      <contact-coach v-if="contact"></contact-coach>
-    </base-card>
-  </div>
+  <base-card>
+    <header>
+      <h3>{{ name }}</h3>
+      <p>{{ money }}€/1h</p>
+    </header>
+    <main>
+      <span v-for="type in types" :key="type" :class="type">{{ type }}</span>
+    </main>
+    <footer>
+      <base-button @click="toggleShow">Details</base-button>
+      <base-button @click="toggleContact">Contact</base-button>
+    </footer>
+    <section v-if="show">{{ description }}</section>
+    <contact-coach v-if="contact"></contact-coach>
+  </base-card>
 </template>
 
 <script>
-import BaseButton from "./BaseButton.vue";
-import BaseCard from "./BaseCard.vue";
-import ContactCoach from "./Pages/Couches/ContactCoach.vue";
+import BaseButton from "../../BaseButton.vue";
+import BaseCard from "../../BaseCard.vue";
+import ContactCoach from "./ContactCoach.vue";
 
 export default {
   components: { BaseCard, ContactCoach, BaseButton },
@@ -49,18 +46,19 @@ export default {
         this.contact = false;
       }
     },
+    blabla() {
+      this.$store.commit("filtredArr", this.types); // skús type
+    },
   },
 };
 </script>
 <style scoped>
 h3 {
   margin: 10px;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+
   padding: 8px;
 }
 p {
-  /* border: 1px solid red; */
   margin-left: 25px;
 }
 

@@ -48,7 +48,6 @@ export default {
   methods: {
     filter() {
       this.$store.commit("filtredArr", this.inputs);
-      // Object.values zodpovedá za to, aby sme si object zmenili na pole ktoré porovnáme
     },
   },
 };
@@ -68,7 +67,6 @@ h1 {
 
 form {
   color: #555d50;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +81,6 @@ label {
   align-items: center;
   gap: 8px;
 }
-
 button {
   width: 100px;
   padding: 6px;
@@ -91,13 +88,10 @@ button {
   margin-left: 20px;
   margin-bottom: 15px;
 }
-
 .controls-header {
   cursor: pointer;
-
   padding: 3px 8px 3px 8px;
 }
-
 .controls-header:hover {
   font-weight: bold;
 }

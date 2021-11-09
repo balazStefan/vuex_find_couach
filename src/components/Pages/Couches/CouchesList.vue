@@ -1,7 +1,7 @@
 <template>
   <div>
     <base-card>
-      <couch-header></couch-header>
+      <couch-filter></couch-filter>
     </base-card>
     <base-coach
       v-for="coach in coaches"
@@ -16,13 +16,12 @@
   </div>
 </template>
 <script>
-import CouchHeader from "./CouchHeader.vue";
-import BaseCoach from "../../BaseCoach.vue";
+import BaseCoach from "./BaseCouch.vue";
 import BaseCard from "../../BaseCard.vue";
-// import TheInfo from "../../UI/TheInfo.vue";
+import CouchFilter from "./CouchFilter.vue";
 
 export default {
-  components: { CouchHeader, BaseCoach, BaseCard },
+  components: { BaseCoach, BaseCard, CouchFilter },
   computed: {
     coaches() {
       return this.$store.getters.finalState;

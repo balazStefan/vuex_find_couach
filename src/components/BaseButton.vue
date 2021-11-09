@@ -1,5 +1,7 @@
 <template>
-  <button><slot></slot></button>
+  <button>
+    <slot></slot>
+  </button>
 </template>
 <script>
 export default {};
@@ -15,8 +17,5 @@ button {
   border: none;
   color: #555d50;
   background-color: #e8e8e8;
-  /* outline: outset 1px #ccc; */
-
-  /* %border: 1px solid rgba(97, 105, 93, 0.1); */
 }
 </style>
