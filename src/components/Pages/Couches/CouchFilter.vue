@@ -25,15 +25,15 @@
       <label for="Carrer" class="controls-header">
         <input
           type="checkbox"
-          name="Carrer"
-          id="Carrer"
-          value="Carrer"
+          name="Career"
+          id="Career"
+          value="Career"
           v-model="inputs"
         />
-        Carrer</label
+        Career</label
       >
     </form>
-    <base-button @click="filter">Refresh</base-button>
+    <base-button @click="test">Filtruj</base-button>
   </div>
 </template>
 <script>
@@ -45,9 +45,14 @@ export default {
       inputs: [],
     };
   },
+  // computed: {
+  //   setCoaches() {
+  //     return this.$store.getters.getCoaches;
+  //   },
+  // },
   methods: {
-    filter() {
-      this.$store.commit("filtredArr", this.inputs);
+    test() {
+      this.$store.commit("filter", this.inputs);
     },
   },
 };
@@ -67,6 +72,7 @@ h1 {
 
 form {
   color: #555d50;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,6 +87,7 @@ label {
   align-items: center;
   gap: 8px;
 }
+
 button {
   width: 100px;
   padding: 6px;
@@ -88,10 +95,13 @@ button {
   margin-left: 20px;
   margin-bottom: 15px;
 }
+
 .controls-header {
   cursor: pointer;
+
   padding: 3px 8px 3px 8px;
 }
+
 .controls-header:hover {
   font-weight: bold;
 }

@@ -8,11 +8,11 @@
       <span v-for="type in types" :key="type" :class="type">{{ type }}</span>
     </main>
     <footer>
-      <base-button @click="toggleShow">Details</base-button>
-      <base-button @click="toggleContact">Contact</base-button>
+      <base-button>Details</base-button>
+      <base-button>Contact</base-button>
     </footer>
-    <section v-if="show">{{ description }}</section>
-    <contact-coach v-if="contact"></contact-coach>
+    <section v-show="toggleDesc">{{ desc }}</section>
+    <contact-coach v-show="toggleContact"></contact-coach>
   </base-card>
 </template>
 
@@ -22,40 +22,19 @@ import BaseCard from "../../BaseCard.vue";
 import ContactCoach from "./ContactCoach.vue";
 
 export default {
+  props: ["name", "desc", "types", "money"],
   components: { BaseCard, ContactCoach, BaseButton },
-  props: ["name", "money", "description", "types", "visibility"],
   data() {
     return {
-      show: false,
-      contact: false,
+      toggleDesc: false, // dočasne riešenie
+      toggleContact: false, // dočasne riešenie, nebude to cez v-show minimálne nie contact, mal by to byť zvlášť link pod id Coucha
     };
-  },
-
-  methods: {
-    toggleShow() {
-      if (this.show === false) {
-        this.show = true;
-      } else {
-        this.show = false;
-      }
-    },
-    toggleContact() {
-      if (this.contact === false) {
-        this.contact = true;
-      } else {
-        this.contact = false;
-      }
-    },
-    blabla() {
-      this.$store.commit("filtredArr", this.types); // skús type
-    },
   },
 };
 </script>
 <style scoped>
 h3 {
   margin: 10px;
-
   padding: 8px;
 }
 p {
@@ -63,14 +42,12 @@ p {
 }
 
 main {
-  /* border: 1px solid blue; */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 25px;
 }
 span {
-  /* border: 1px solid black; */
   padding: 6px;
   border-radius: 8px;
   box-shadow: 4px 4px #ccc;
@@ -89,7 +66,7 @@ button:nth-child(2) {
 }
 section {
   padding: 10px;
-  /* border: 1px solid black; */
+
   margin-top: 10px;
   align-self: center;
 }

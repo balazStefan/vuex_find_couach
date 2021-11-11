@@ -3,17 +3,11 @@
     <h2>Register as a coach</h2>
     <form @submit.prevent>
       <label for=""><strong>Enter your Name :</strong></label>
-      <input
-        type="text"
-        placeholder="John Smith"
-        ref="inputValue"
-        class="input-styling"
-      />
+      <input type="text" placeholder="John Smith" class="input-styling" />
       <label for=""><strong>Enter your Email Adress :</strong></label>
       <input
         type="email"
         placeholder="example@example.com"
-        ref="inputEmail"
         class="input-styling"
       />
       <label for=""><strong>About me :</strong> </label>
@@ -22,7 +16,6 @@
         cols="10"
         rows="10"
         placeholder="Describe Yourself in few sentences...."
-        ref="inputMsg"
       ></textarea>
       <label for="money" class="money-label">
         <input
@@ -32,7 +25,6 @@
           min="5"
           max="100"
           step="0.01"
-          ref="inputMoney"
           lang="us"
           id="money"
           name="money"
@@ -44,7 +36,6 @@
         <input
           type="checkbox"
           id="frontend"
-          v-model="checkInfo"
           value="Frontend"
           name="valid"
           class="input-controls"
@@ -54,7 +45,6 @@
         <input
           type="checkbox"
           id="backend"
-          v-model="checkInfo"
           value="Backend"
           name="valid"
           class="input-controls"
@@ -64,14 +54,13 @@
         <input
           type="checkbox"
           id="Carrer"
-          v-model="checkInfo"
           value="Carrer"
           name="valid"
           class="input-controls"
         />
         <label for="Carrer" class="label-controls">Carrer</label>
       </div>
-      <base-button @click="newCoach">Register</base-button>
+      <base-button>Register</base-button>
     </form>
   </base-card>
 </template>
@@ -81,29 +70,6 @@ import BaseButton from "../../BaseButton.vue";
 import BaseCard from "../../BaseCard.vue";
 export default {
   components: { BaseCard, BaseButton },
-  data() {
-    return {
-      checkInfo: [],
-    };
-  },
-
-  methods: {
-    newCoach() {
-      this.$store.commit("updateArray", {
-        id: new Date().toISOString().slice(6),
-        name: this.$refs.inputValue.value,
-        email: this.$refs.inputEmail.value,
-        money: this.$refs.inputMoney.value,
-        description: this.$refs.inputMsg.value,
-        types: this.checkInfo,
-      });
-
-      // const name = this.$refs.inputValue.value;
-      // const email = this.$refs.Email.value;
-      // const inputMsg = this.$refs.inputMsg.value;
-      // console.log(name, email, inputMsg);
-    },
-  },
 };
 </script>
 

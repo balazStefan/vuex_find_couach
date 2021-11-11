@@ -9,20 +9,18 @@ const store = createStore({
           name: "Štefan Baláž",
           email: "stevobko123@gmail.com",
           money: 35,
-          types: ["Frontend", "Backend"],
+          types: ["Frontend", "Backend", "Career"],
           description:
             "Moje meno je Štefan Baláž , venujem sa FrontEnd Dizajnu niečo okolo 10 mesiacov, v poslednej dobe ale oveľa aktívnejšie",
-          visibility: false,
         },
         {
           id: "vava",
           name: "Vanessa Revická",
           email: "vava@gmail.com",
           money: 45,
-          types: ["Backend", "Carrer"],
+          types: ["Backend", "Career"],
           description:
             "Moje meno je Vanessa , pracujem pre spoločnosť Yangfeng od polovice roku 2021",
-          visibility: false,
         },
         {
           id: "tobi",
@@ -32,57 +30,34 @@ const store = createStore({
           types: ["Backend"],
           description:
             "Moje meno je Tobinko, mojou prácou je byť rozkošný a rád pozujem na fotky ",
-          visibility: false,
         },
         {
           id: "romi",
           name: "Romana Revická",
           email: "romi@gmail.com",
           money: 50,
-          types: ["Frontend", "Carrer"],
+          types: ["Frontend", "Career"],
           description:
             "Moje meno je Romana, som aktuálne nezamestnaná, a som žena v domácnosti  ",
-          visibility: false,
         },
       ],
+      filtredCoaches: [],
     };
   },
-  mutations: {
-    updateArray(state, payload) {
-      // adding new Couach to array
-      const NewCouch = payload;
-      return state.coaches.unshift(NewCouch);
-    },
-
-    filtredArr(state, payload) {
-      state.coaches.filter((coach) => {
-        if (coach.types.includes("Frontend") && payload.includes("Frontend")) {
-          coach.visibility = true;
-        } else if (
-          coach.types.includes("Backend") &&
-          payload.includes("Backend")
-        ) {
-          coach.visibility = true;
-        } else if (
-          coach.types.includes("Carrer") &&
-          payload.includes("Carrer")
-        ) {
-          coach.visibility = true;
-        } else {
-          coach.visibility = false;
-        }
-      });
-      console.log(payload);
-      console.log(state);
+  getters: {
+    getCoaches(state) {
+      return state.filtredCoaches;
     },
   },
-
-  actions: {},
-  getters: {
-    finalState(state) {
-      return state.coaches;
+  mutations: {
+    filter(state, payload) {
+      const coachestoFilter = [...state.coaches];
+      state.filtredCoaches = coachestoFilter.filter((coach) =>
+        coach.types.includes(...payload)
+      );
     },
   },
 });
 
 export default store;
+///

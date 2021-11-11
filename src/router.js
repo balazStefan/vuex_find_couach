@@ -5,6 +5,7 @@ import RegisterCoach from "./components/Pages/Couches/RegisterCoach.vue";
 
 const router = createRouter({
   history: createWebHistory(),
+  props: true,
   routes: [
     { path: "/", component: CouchesList, redirect: "/couches" },
     { path: "/register", component: RegisterCoach },
