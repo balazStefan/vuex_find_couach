@@ -1,14 +1,14 @@
 import { createStore } from "vuex";
-
+let timer;
 const store = createStore({
   state() {
     return {
       requests: [],
-      // userIsCoach: false,
-      // lastFetch: null,
-      userId: "c3",
-      // token: null,
-      // tokenExpiration: null,
+      // isCoach: false,
+      lastFetch: null,
+      userId: null,
+      token: null,
+      didAutoLogout: false,
       coaches: [
         {
           id: "stefan",
@@ -80,6 +80,9 @@ const store = createStore({
     isCoach(state) {
       return state.isCoach;
     },
+    didAutoLogout(state) {
+      return state.didAutoLogout;
+    },
   },
   mutations: {
     addNewCoach(state, payload) {
@@ -101,7 +104,10 @@ const store = createStore({
     setUser(state, payload) {
       state.token = payload.token;
       state.userId = payload.userId;
-      state.tokenExpiration = payload.tokenExpiration;
+      state.didAutoLogout = false;
+    },
+    setAutoLogout(state) {
+      state.didAutoLogout = true;
     },
   },
   actions: {
@@ -139,7 +145,7 @@ const store = createStore({
     },
 
     async addNewCoach(context, payload) {
-      const userId = "c3"; // zodpovedné za ID "C3" neskor vraj da firebase skutočné context.getters.userId
+      const userId = context.getters.getUserId; // zodpovedné za ID "C3" neskor vraj da firebase skutočné context.getters.userId
       const coachData = {
         name: payload.name,
         email: payload.email,
@@ -147,9 +153,10 @@ const store = createStore({
         types: payload.types,
         description: payload.description,
       };
-      // const token = context.getters.token;
+      const token = context.getters.token;
       const response = await fetch(
-        `https://dasdas-b3d79-default-rtdb.firebaseio.com/coaches/${userId}.json`,
+        `https://dasdas-b3d79-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=` +
+          token,
         {
           method: "PUT",
           body: JSON.stringify(coachData),
@@ -197,9 +204,10 @@ const store = createStore({
     async fetchRequests(context) {
       const coachId = context.getters.getUserId; // -----------------------------------  fetch na základe ID
 
-      // const token = context.getters.token;
+      const token = context.getters.token;
       const response = await fetch(
-        `https://dasdas-b3d79-default-rtdb.firebaseio.com/requests/${coachId}.json`
+        `https://dasdas-b3d79-default-rtdb.firebaseio.com/requests/${coachId}.json?auth=` +
+          token
       );
       const responseData = await response.json();
       if (!response.ok) {
@@ -222,64 +230,109 @@ const store = createStore({
       }
       context.commit("setRequests", requests);
     },
-    // async signUp(context, payload) {
-    //   const response = await fetch(
-    //     `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA1evoJjLdUb2LKkkZrQDZD_v4QuRMFFQQ
-    //     `,
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({
-    //         email: payload.email,
-    //         password: payload.password,
-    //         returnSecureToken: true,
-    //       }),
-    //     }
-    //   );
-    //   const responseData = await response.json();
-    //   if (!response.ok) {
-    //     const error = new Error(
-    //       responseData.message ||
-    //         "Fail to  Sign Up .. This Email adress is used..."
-    //     );
-    //     throw error;
-    //   }
+    ///////////////////////////////////////SIGN UP/////////////////////////////////////////////////////////////
+    async signUp(context, payload) {
+      const response = await fetch(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA1evoJjLdUb2LKkkZrQDZD_v4QuRMFFQQ
+        `,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: payload.email,
+            password: payload.password,
+            returnSecureToken: true,
+          }),
+        }
+      );
+      const responseData = await response.json();
+      if (!response.ok) {
+        const error = new Error(
+          responseData.message ||
+            "Fail to  Sign Up .. This Email adress is used..."
+        );
+        throw error;
+      }
 
-    //   context.commit("setUser", {
-    //     token: responseData.idToken,
-    //     userId: responseData.localId,
-    //     tokenExpiration: responseData.expiresIn,
-    //   });
-    // },
-    // async login(context, payload) {
-    //   const response = await fetch(
-    //     `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA1evoJjLdUb2LKkkZrQDZD_v4QuRMFFQQ
-    //     `,
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({
-    //         email: payload.email,
-    //         password: payload.password,
-    //         returnSecureToken: true,
-    //       }),
-    //     }
-    //   );
-    //   const responseData = await response.json();
-    //   if (!response.ok) {
-    //     //... err handling
+      context.commit("setUser", {
+        token: responseData.idToken,
+        userId: responseData.localId,
+        tokenExpiration: responseData.expiresIn,
+      });
+    },
 
-    //     const error = new Error(
-    //       responseData.message ||
-    //         "Fail to  Sign Up .. This Email adress is used..."
-    //     );
-    //     throw error;
-    //   }
+    async login(context, payload) {
+      const response = await fetch(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA1evoJjLdUb2LKkkZrQDZD_v4QuRMFFQQ
+        `,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: payload.email,
+            password: payload.password,
+            returnSecureToken: true,
+          }),
+        }
+      );
+      const responseData = await response.json();
+      if (!response.ok) {
+        //... err handling
 
-    //   context.commit("setUser", {
-    //     token: responseData.idToken,
-    //     userId: responseData.localId,
-    //     tokenExpiration: responseData.expiresIn,
-    //   });
-    // },
+        const error = new Error(
+          responseData.message ||
+            "Fail to  Sign Up .. This Email adress is used..."
+        );
+        throw error;
+      }
+      const expireIn = +responseData.expiresIn * 1000;
+      // const expireIn = 5000;
+      const expireDate = new Date().getTime() + expireIn;
+      localStorage.setItem("tokenExpiration", expireDate);
+      localStorage.setItem("token", responseData.idToken);
+      localStorage.setItem("userId", responseData.localId);
+
+      timer = setTimeout(function () {
+        context.dispatch("autoLogout");
+      }, expireIn);
+
+      context.commit("setUser", {
+        token: responseData.idToken,
+        userId: responseData.localId,
+      });
+    },
+    autoLogIn(context) {
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
+      const tokenExpiration = localStorage.getItem("tokenExpiration");
+      const expiresIn = +tokenExpiration - new Date().getTime();
+      if (expiresIn < 0) {
+        return;
+      }
+      timer = setTimeout(function () {
+        context.dispatch("autoLogout");
+      }, expiresIn);
+      if (token && userId) {
+        context.commit("setUser", {
+          token: token,
+          userId: userId,
+        });
+      }
+    },
+    ///////////////////////////////////////////////////////LOGOUT/////////////////////////////////////////////////
+    logout(context) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("tokenExpiration");
+      clearTimeout(timer);
+      context.commit("setUser", {
+        token: null,
+        userId: null,
+      });
+    },
+    //////////////////////////////////////////////////////////AUTOLOGOUT/////////////////////////////////////////////
+    autoLogout(context) {
+      context.dispatch("logout");
+      context.commit("setAutoLogout");
+    },
   },
 });
 

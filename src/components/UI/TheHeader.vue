@@ -2,17 +2,23 @@
   <div>
     <h1><router-link class="logo" to="/">Find a coach</router-link></h1>
     <ul>
-      <li><router-link to="/auth" v-if="!isAuth">Log In</router-link></li>
       <li><router-link to="/coaches">Couches List</router-link></li>
       <li>
-        <router-link class="active" to="/register" v-if="isAuth"
+        <router-link class="active" to="/register" v-show="isAuth"
           >Register as a coach</router-link
         >
       </li>
       <li>
-        <router-link to="/requests" class="lastOne">Request List</router-link>
+        <router-link to="/requests" class="lastOne" v-show="isAuth"
+          >Request List</router-link
+        >
       </li>
-      <li><router-link to="/">Log out</router-link></li>
+      <li><router-link to="/auth" v-if="!isAuth">Log In</router-link></li>
+      <li>
+        <router-link to="/" v-show="isAuth" @click="logout"
+          >Log out</router-link
+        >
+      </li>
     </ul>
   </div>
 </template>
@@ -24,6 +30,12 @@ export default {
     },
     isCoach() {
       return this.$store.getters.userIsCoach;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.replace("/coaches");
     },
   },
 };

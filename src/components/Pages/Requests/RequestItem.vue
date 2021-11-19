@@ -1,9 +1,16 @@
 <template>
   <li>
     <base-card>
-      <a :href="emailLink">{{ email }}</a>
-
-      <p>{{ message }}</p>
+      <div>
+        <header>
+          <p class="email__position"><strong>Email from:</strong></p>
+          <a :href="emailLink">{{ email }}</a>
+        </header>
+        <section>
+          <p><strong>Message:</strong></p>
+          <p>{{ message }}</p>
+        </section>
+      </div>
     </base-card>
   </li>
 </template>

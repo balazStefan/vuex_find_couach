@@ -8,8 +8,7 @@
       <h2>All Requests</h2>
     </base-card>
     <base-spinner v-if="isLoading"></base-spinner>
-    <!-- <ul v-else-if="hasReq && !isLoading"> -->
-    <ul v-if="hasRequestes">
+    <ul v-if="hasRequestes && !isLoading">
       <request-item
         v-for="req in receivedRequests"
         :key="req.id"
