@@ -1,37 +1,33 @@
 <template>
-  <base-card>
-    <h3>Email from:</h3>
-    <p><strong>Message:</strong></p>
-    <base-button>Reply</base-button>
-  </base-card>
+  <li>
+    <base-card>
+      <a :href="emailLink">{{ email }}</a>
+
+      <p>{{ message }}</p>
+    </base-card>
+  </li>
 </template>
 <script>
-import BaseCard from "../../BaseCard.vue";
-import BaseButton from "../../BaseButton.vue";
+import BaseCard from "../../UI/BaseCard.vue";
 
 export default {
-  components: {
-    BaseButton,
-    BaseCard,
+  components: { BaseCard },
+  props: ["email", "message"],
+
+  computed: {
+    emailLink() {
+      return "mailto:" + this.email;
+    },
   },
 };
 </script>
 <style scoped>
-h3 {
-  border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
-}
-p {
-  border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
-}
-button {
+header {
   display: flex;
-  margin: auto;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  padding: 5px 20px;
+  gap: 10px;
+  padding: 10px;
+}
+section {
+  padding: 10px;
 }
 </style>

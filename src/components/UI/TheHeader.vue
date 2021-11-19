@@ -2,22 +2,31 @@
   <div>
     <h1><router-link class="logo" to="/">Find a coach</router-link></h1>
     <ul>
+      <li><router-link to="/auth" v-if="!isAuth">Log In</router-link></li>
+      <li><router-link to="/coaches">Couches List</router-link></li>
       <li>
-        <router-link class="active" to="/register"
+        <router-link class="active" to="/register" v-if="isAuth"
           >Register as a coach</router-link
         >
       </li>
       <li>
-        <router-link to="/couches">Couches List</router-link>
-      </li>
-      <li>
         <router-link to="/requests" class="lastOne">Request List</router-link>
       </li>
+      <li><router-link to="/">Log out</router-link></li>
     </ul>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAutentificated;
+    },
+    isCoach() {
+      return this.$store.getters.userIsCoach;
+    },
+  },
+};
 </script>
 <style scoped>
 div {
@@ -74,7 +83,7 @@ a {
   border-radius: 8px;
   border: none;
 }
-a.router-link-active {
+.router-link-exact-active {
   background-color: red;
   color: white;
   border-radius: 8px;

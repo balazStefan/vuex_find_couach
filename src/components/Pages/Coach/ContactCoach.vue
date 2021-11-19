@@ -1,0 +1,146 @@
+<template>
+  <div>
+    <base-card class="contact_position">
+      <form>
+        <label for="email"><strong> Your Email</strong></label>
+        <input
+          class="contact-control contact--control_email"
+          type="text"
+          name="email"
+          id="email"
+          placeholder=" Enter your email adress"
+          v-model.trim="inputEmail.value"
+          @blur="clearValidity('inputEmail')"
+        />
+        <p v-if="!inputEmail.isValid">
+          You must type your email adress, and check if there is a "@" symbol in
+          your mail adress..
+        </p>
+        <label for="message"><strong>Your Message </strong></label>
+        <textarea
+          class="contact-control"
+          name="message"
+          id="message"
+          cols="30"
+          rows="4"
+          placeholder="Type Here your question...."
+          v-model.trim="inputQuestion.value"
+          @blur="clearValidity('inputQuestion')"
+        ></textarea>
+        <p v-if="!inputQuestion.isValid">You must ask something...</p>
+        <base-button type="button" @click="submitQuestion">Send</base-button>
+      </form>
+    </base-card>
+  </div>
+</template>
+<script>
+import BaseButton from "../../UI/BaseButton.vue";
+import BaseCard from "../../UI/BaseCard.vue";
+export default {
+  components: { BaseButton, BaseCard },
+  data() {
+    return {
+      inputEmail: {
+        isValid: true,
+        value: "",
+      },
+      inputQuestion: {
+        isValid: true,
+        value: "",
+      },
+      formIsValid: true,
+    };
+  },
+  methods: {
+    validation() {
+      this.formIsValid = true;
+      if (
+        this.inputEmail.value === "" ||
+        !this.inputEmail.value.includes("@")
+      ) {
+        this.inputEmail.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.inputQuestion.value === "") {
+        this.inputQuestion.isValid = false;
+        this.formIsValid = false;
+      }
+    },
+    clearValidity(input) {
+      this[input].isValid = true;
+    },
+    submitQuestion() {
+      this.validation();
+      if (!this.formIsValid) {
+        // ak nie sú nepošle ďalej údaje a vráti
+        return;
+      }
+
+      this.$store.dispatch("contactCoach", {
+        email: this.inputEmail.value,
+        message: this.inputQuestion.value,
+        coachId: this.$route.params.id,
+      });
+
+      this.$router.replace("/coaches");
+    },
+  },
+};
+</script>
+<style scoped>
+.contact_position {
+  display: flex;
+}
+form {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+input {
+  width: 450px;
+  height: 30px;
+  align-self: center;
+  border: #ccc 1px solid;
+}
+textarea {
+  width: 450px;
+  height: 120px;
+  resize: none;
+  border: #ccc 1px solid;
+}
+
+button {
+  width: 100px;
+  align-self: center;
+  margin-top: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.contact-control {
+  border: none;
+  color: #555d50;
+}
+.contact-control::selection {
+  color: white;
+  background-color: black;
+  background: orangered;
+}
+
+.contact-control:focus,
+.contact-control:active {
+  border: none;
+  outline: none;
+}
+
+.contact--control_email {
+  border-bottom: 1px solid #555d50;
+}
+.contact--control_email:focus {
+  border-bottom: 1px solid #555d50;
+}
+</style>

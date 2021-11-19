@@ -3,6 +3,12 @@ import { createStore } from "vuex";
 const store = createStore({
   state() {
     return {
+      requests: [],
+      // userIsCoach: false,
+      // lastFetch: null,
+      userId: "c3",
+      // token: null,
+      // tokenExpiration: null,
       coaches: [
         {
           id: "stefan",
@@ -41,21 +47,239 @@ const store = createStore({
             "Moje meno je Romana, som aktuálne nezamestnaná, a som žena v domácnosti  ",
         },
       ],
-      filtredCoaches: [],
     };
   },
   getters: {
     getCoaches(state) {
-      return state.filtredCoaches;
+      return state.coaches;
+    },
+    getUserId(state) {
+      return state.userId;
+    },
+    requests(state, getters) {
+      const coachId = getters.getUserId;
+      return state.requests.filter((req) => req.coachId === coachId);
+    },
+    hasRequests(_, getters) {
+      return getters.requests && getters.requests.length > 0;
+    },
+    shouldUpdate(state) {
+      const lastFetch = state.lastFetch;
+      if (!lastFetch) {
+        return true;
+      }
+      const currentTimeStamp = new Date().getTime();
+      return (currentTimeStamp - lastFetch) / 1000 > 60; // aktuálny čas- posledný čas /1000 *60 aby mi vyrátalo minutu
+    },
+    token(state) {
+      return state.token;
+    },
+    isAutentificated(state) {
+      return !!state.token;
+    },
+    isCoach(state) {
+      return state.isCoach;
     },
   },
   mutations: {
-    filter(state, payload) {
-      const coachestoFilter = [...state.coaches];
-      state.filtredCoaches = coachestoFilter.filter((coach) =>
-        coach.types.includes(...payload)
-      );
+    addNewCoach(state, payload) {
+      state.coaches.unshift(payload);
     },
+    addRequest(state, payload) {
+      state.requests.push(payload);
+    },
+    setCoaches(state, payload) {
+      // zodpovedné aby sa načítali dáta z databazy
+      state.coaches = payload;
+    },
+    setRequests(state, payload) {
+      state.requests = payload;
+    },
+    setFetchTimeStamp(state) {
+      state.lastFetch = new Date().getTime();
+    },
+    setUser(state, payload) {
+      state.token = payload.token;
+      state.userId = payload.userId;
+      state.tokenExpiration = payload.tokenExpiration;
+    },
+  },
+  actions: {
+    async loadCoaches(context, payload) {
+      if (!payload.refreshNow && !context.getters.shouldUpdate) {
+        // payload.refreshNow, aby btn fungoval vždy , inak sa každú min. refreshne
+        return;
+      }
+      const response = await fetch(
+        `https://dasdas-b3d79-default-rtdb.firebaseio.com/coaches.json`
+      );
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        const error = new Error(
+          responseData.message || "Fail to load Coaches from database..."
+        );
+        throw error;
+      }
+      // helper to restructure answer from firebase
+      const coaches = [];
+      for (const key in responseData) {
+        const coach = {
+          id: key,
+          name: responseData[key].name,
+          email: responseData[key].email,
+          money: responseData[key].money,
+          types: responseData[key].types,
+          description: responseData[key].description,
+        };
+        coaches.push(coach);
+      }
+      context.commit("setCoaches", coaches);
+      context.commit("setFetchTimeStamp");
+    },
+
+    async addNewCoach(context, payload) {
+      const userId = "c3"; // zodpovedné za ID "C3" neskor vraj da firebase skutočné context.getters.userId
+      const coachData = {
+        name: payload.name,
+        email: payload.email,
+        money: payload.money,
+        types: payload.types,
+        description: payload.description,
+      };
+      // const token = context.getters.token;
+      const response = await fetch(
+        `https://dasdas-b3d79-default-rtdb.firebaseio.com/coaches/${userId}.json`,
+        {
+          method: "PUT",
+          body: JSON.stringify(coachData),
+        }
+      );
+      // const responseData = await response.json();
+      if (!response.ok) {
+        //error....
+      }
+      context.commit("addNewCoach", {
+        ...coachData,
+        id: userId,
+      });
+    },
+    async contactCoach(context, payload) {
+      const newRequest = {
+        // id: new Date().toISOString(),
+        // coachId: payload.coachId,
+
+        email: payload.email,
+        message: payload.message,
+      };
+      const response = await fetch(
+        `https://dasdas-b3d79-default-rtdb.firebaseio.com/requests/${payload.coachId}.json`,
+        {
+          method: "POST",
+          body: JSON.stringify(newRequest),
+        }
+      );
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        const error = new Error(
+          responseData.message || "Failed to send request "
+        );
+        throw error;
+      }
+      // console.log(payload);
+      newRequest.id = responseData.name;
+      newRequest.coachId = payload.coachId;
+      console.log(context);
+      // console.log(responseData.coachId); // responseData.name, nakoľko firebase, generuje nové ID pre rq a má to pod. name a pomocou newReq.id pridávam do poľa novú položku ale až po tom keĎ nám príde späť z firebae
+      context.commit("addRequest", newRequest);
+    },
+    async fetchRequests(context) {
+      const coachId = context.getters.getUserId; // -----------------------------------  fetch na základe ID
+
+      // const token = context.getters.token;
+      const response = await fetch(
+        `https://dasdas-b3d79-default-rtdb.firebaseio.com/requests/${coachId}.json`
+      );
+      const responseData = await response.json();
+      if (!response.ok) {
+        const error = new Error(
+          responseData.message || "Failed to fetch requests..."
+        );
+        throw error;
+      }
+      // vytvorím si helpera, nakoľko príde odpoveď z firebase v tvare ktorý musíme najprv pretvoriť aby vyzeral ako req
+      const requests = [];
+      for (const key in responseData) {
+        const request = {
+          id: key,
+          coachId: coachId, //-----------------------CYHBA BOLA TU mal som tam this.
+          email: responseData[key].email,
+          message: responseData[key].message,
+        };
+
+        requests.push(request);
+      }
+      context.commit("setRequests", requests);
+    },
+    // async signUp(context, payload) {
+    //   const response = await fetch(
+    //     `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA1evoJjLdUb2LKkkZrQDZD_v4QuRMFFQQ
+    //     `,
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({
+    //         email: payload.email,
+    //         password: payload.password,
+    //         returnSecureToken: true,
+    //       }),
+    //     }
+    //   );
+    //   const responseData = await response.json();
+    //   if (!response.ok) {
+    //     const error = new Error(
+    //       responseData.message ||
+    //         "Fail to  Sign Up .. This Email adress is used..."
+    //     );
+    //     throw error;
+    //   }
+
+    //   context.commit("setUser", {
+    //     token: responseData.idToken,
+    //     userId: responseData.localId,
+    //     tokenExpiration: responseData.expiresIn,
+    //   });
+    // },
+    // async login(context, payload) {
+    //   const response = await fetch(
+    //     `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA1evoJjLdUb2LKkkZrQDZD_v4QuRMFFQQ
+    //     `,
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({
+    //         email: payload.email,
+    //         password: payload.password,
+    //         returnSecureToken: true,
+    //       }),
+    //     }
+    //   );
+    //   const responseData = await response.json();
+    //   if (!response.ok) {
+    //     //... err handling
+
+    //     const error = new Error(
+    //       responseData.message ||
+    //         "Fail to  Sign Up .. This Email adress is used..."
+    //     );
+    //     throw error;
+    //   }
+
+    //   context.commit("setUser", {
+    //     token: responseData.idToken,
+    //     userId: responseData.localId,
+    //     tokenExpiration: responseData.expiresIn,
+    //   });
+    // },
   },
 });
 
