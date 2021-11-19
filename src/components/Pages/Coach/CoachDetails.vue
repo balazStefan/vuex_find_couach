@@ -19,12 +19,7 @@
   </div>
 </template>
 <script>
-// import BaseButton from "../../UI/BaseButton.vue";
-import BaseCard from "../../UI/BaseCard.vue";
-import BaseTypes from "../../UI/BaseTypes.vue";
-
 export default {
-  components: { BaseCard, BaseTypes },
   props: ["id"],
   data() {
     return {

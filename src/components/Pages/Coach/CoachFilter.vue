@@ -32,9 +32,7 @@
   </div>
 </template>
 <script>
-// import BaseButton from "../../UI/BaseButton.vue";
 export default {
-  // components: { BaseButton },
   emits: ["change-filter"],
   data() {
     return {

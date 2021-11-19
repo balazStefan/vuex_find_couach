@@ -28,20 +28,12 @@
 </template>
 <script>
 import BaseCoach from "./BaseCoach.vue";
-import BaseCard from "../../UI/BaseCard.vue";
 import CoachFilter from "./CoachFilter.vue";
-import BaseButton from "../../UI/BaseButton.vue";
-import BaseSpinner from "../../UI/BaseSpinner.vue";
-import BaseDialog from "../../UI/BaseDialog.vue";
 
 export default {
   components: {
     BaseCoach,
-    BaseCard,
     CoachFilter,
-    BaseButton,
-    BaseSpinner,
-    BaseDialog,
   },
   data() {
     return {

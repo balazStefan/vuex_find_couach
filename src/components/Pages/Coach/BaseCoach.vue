@@ -15,21 +15,10 @@
 </template>
 
 <script>
-// import BaseButton from "../../UI/BaseButton.vue";
-// import BaseButton from "../../UI/BaseButton.vue";
-import BaseCard from "../../UI/BaseCard.vue";
-import BaseTypes from "../../UI/BaseTypes.vue";
 // import ContactCoach from "./ContactCoach.vue";
 
 export default {
   props: ["name", "desc", "types", "money", "id"],
-  components: { BaseCard, BaseTypes },
-  // data() {,
-  //   return {
-  //     toggleDesc: false, // dočasne riešenie
-  //     toggleContact: false, // dočasne riešenie, nebude to cez v-show minimálne nie contact, mal by to byť zvlášť link pod id Coucha
-  //   };
-  // },
 
   computed: {
     linkToContact() {

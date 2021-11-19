@@ -105,10 +105,7 @@
 </template>
 
 <script>
-import BaseButton from "../../UI/BaseButton.vue";
-import BaseCard from "../../UI/BaseCard.vue";
 export default {
-  components: { BaseCard, BaseButton },
   data() {
     return {
       formIsValid: true,

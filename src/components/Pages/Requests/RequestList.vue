@@ -21,13 +21,10 @@
   </div>
 </template>
 <script>
-import BaseCard from "../../UI/BaseCard.vue";
 import RequestItem from "./RequestItem.vue";
-import BaseDialog from "../..//UI/BaseDialog.vue";
-import BaseSpinner from "../../UI/BaseSpinner.vue";
 
 export default {
-  components: { BaseCard, BaseDialog, BaseSpinner, RequestItem },
+  components: { RequestItem },
   data() {
     return {
       isLoading: false,

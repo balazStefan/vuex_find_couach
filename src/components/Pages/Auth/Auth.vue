@@ -40,12 +40,7 @@
   </div>
 </template>
 <script>
-import BaseCard from "../../UI/BaseCard.vue";
-import BaseButton from "../../UI/BaseButton.vue";
-import BaseDialog from "../../UI/BaseDialog.vue";
-import BaseSpinner from "../../UI/BaseSpinner.vue";
 export default {
-  components: { BaseCard, BaseButton, BaseDialog, BaseSpinner },
   data() {
     return {
       email: "",
