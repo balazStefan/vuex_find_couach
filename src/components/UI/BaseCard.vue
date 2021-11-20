@@ -9,7 +9,7 @@ export default {};
 </script>
 <style scoped>
 div {
-  width: 65rem;
+  width: 75rem;
   height: fit-content;
   margin: 5rem auto;
   color: #555d50;

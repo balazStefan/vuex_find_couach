@@ -46,7 +46,6 @@ export default {
 }
 body {
   font-family: sans-serif;
-  background-color: white;
 }
 
 /*--------------------------------ANIMACIA:-route-styling ---------------------------*/

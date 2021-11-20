@@ -11,16 +11,26 @@
           <p>{{ message }}</p>
         </section>
       </div>
+      <footer>
+        <base-button @click="deleteReq">Delete</base-button>
+        <base-button>Reply</base-button>
+      </footer>
     </base-card>
   </li>
 </template>
 <script>
 export default {
-  props: ["email", "message"],
+  props: ["email", "message", "id"],
+  emits: ["deleteReq"],
 
   computed: {
     emailLink() {
       return "mailto:" + this.email;
+    },
+  },
+  methods: {
+    deleteReq() {
+      this.$emit("deleteReq", this.id);
     },
   },
 };
@@ -46,5 +56,15 @@ a {
 }
 .email {
   color: darkblue;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+button {
+  padding: 0.6rem;
+  text-align: center;
 }
 </style>

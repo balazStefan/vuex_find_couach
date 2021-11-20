@@ -26,6 +26,9 @@ const store = createStore({
     hasRequests(_, getters) {
       return getters.requests && getters.requests.length > 0;
     },
+    numberOfRequests(_, getters) {
+      return getters.requests.length;
+    },
     shouldUpdate(state) {
       const lastFetch = state.lastFetch;
       if (!lastFetch) {
@@ -46,6 +49,9 @@ const store = createStore({
     didAutoLogout(state) {
       return state.didAutoLogout;
     },
+    // afterDelete(state) {
+    //   return state.requests;
+    // },
   },
   mutations: {
     addNewCoach(state, payload) {
@@ -72,6 +78,11 @@ const store = createStore({
     setAutoLogout(state) {
       state.didAutoLogout = true;
     },
+    // deleteReq(state, payload) {
+    //   console.log(payload);
+    //   console.log(state.requests);
+    //   state.requests.filter((req) => req.id !== payload);
+    // },
   },
   actions: {
     async loadCoaches(context, payload) {

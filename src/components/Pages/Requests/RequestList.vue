@@ -12,8 +12,10 @@
       <request-item
         v-for="req in receivedRequests"
         :key="req.id"
+        :id="req.id"
         :email="req.email"
         :message="req.message"
+        @deleteReq="removeReq"
       ></request-item>
     </ul>
     <h5 v-show="!hasRequests && !isLoading">
@@ -53,7 +55,26 @@ export default {
     handleError() {
       this.error = null;
     },
+    async removeReq(id) {
+      const token = this.$store.getters.token;
+      const coachId = this.$store.getters.getUserId;
+      const response = await fetch(
+        `https://dasdas-b3d79-default-rtdb.firebaseio.com/requests/${coachId}/${id}.json?auth=` +
+          token,
+        { method: "DELETE" } //body: JSON.stringify({ id })
+      );
+      const responseData = await response.json();
+      if (!response.ok) {
+        const error = new Error(
+          responseData.message ||
+            "Fail to  Sign Up .. This Email adress is used..."
+        );
+        throw error;
+      }
+      this.$store.dispatch("fetchRequests");
+    },
   },
+
   created() {
     this.loadReq();
   },

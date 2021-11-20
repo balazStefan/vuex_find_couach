@@ -253,8 +253,8 @@ button::before {
   right: 0%;
   bottom: 0%;
   z-index: -1;
-  border-left: 0.1rem solid #555d50;
-  border-bottom: 0.1rem solid #555d50;
+  border-left: 0.2rem solid black;
+  border-bottom: 0.2rem solid black;
 }
 button::after {
   content: "";
@@ -265,8 +265,8 @@ button::after {
   right: 0%;
   bottom: 50%;
   z-index: -1;
-  border-top: 0.1rem solid #555d50;
-  border-right: 0.1rem solid #555d50;
+  border-top: 0.2rem solid black;
+  border-right: 0.2rem solid black;
 }
 button:hover::before {
   content: "";
@@ -277,8 +277,8 @@ button:hover::before {
   right: 0%;
   bottom: 0%;
   z-index: -1;
-  border-left: 0.1rem solid #555d50;
-  border-bottom: 0.1rem solid #555d50;
+  border-left: 0.2rem solid black;
+  border-bottom: 0.2rem solid black;
   animation: hoverbtnbefore 0.5s forwards;
 }
 button:hover::after {
@@ -290,8 +290,8 @@ button:hover::after {
   right: 0%;
   bottom: 50%;
   z-index: -1;
-  border-top: 0.1rem solid #555d50;
-  border-right: 0.1rem solid #555d50;
+  border-top: 0.2rem solid black;
+  border-right: 0.2rem solid black;
   animation: hoverbtnafter 0.5s forwards;
 }
 

@@ -17,5 +17,7 @@ button {
   border: none;
   color: #555d50;
   background-color: #e8e8e8;
+  position: relative;
+  z-index: 6;
 }
 </style>

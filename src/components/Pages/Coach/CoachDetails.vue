@@ -11,9 +11,10 @@
       <main>
         <section>{{ desc }}</section>
       </main>
-      <div class="position">
-        <!-- <base-button type="button" :to="linkToContact">Contact</base-button> -->
-      </div>
+      <base-button class="backHome" @click="homepage">All Coaches</base-button>
+      <!-- <div class="position">
+        <router-link :to="linkToContact">Contact</router-link>
+      </div> -->
     </base-card>
     <router-view></router-view>
   </div>
@@ -30,9 +31,9 @@ export default {
     name() {
       return this.selectedCoach.name;
     },
-    linktoContact() {
-      return this.$route.path + "/" + this.id + "/contact";
-    },
+    // linkToContact() {
+    //   return this.$route.path + "/" + this.id + "contact";
+    // },
     money() {
       return this.selectedCoach.money;
     },
@@ -48,6 +49,11 @@ export default {
     this.selectedCoach = this.$store.getters.getCoaches.find(
       (coach) => coach.id === this.id
     );
+  },
+  methods: {
+    homepage() {
+      return this.$router.replace("/");
+    },
   },
 };
 </script>
@@ -98,5 +104,11 @@ button {
   display: flex;
   justify-content: center;
   gap: 4rem;
+}
+.backHome {
+  display: flex;
+  margin: auto;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 </style>

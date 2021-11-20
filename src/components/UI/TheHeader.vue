@@ -10,7 +10,7 @@
       </li>
       <li>
         <router-link to="/requests" class="lastOne" v-show="isAuth"
-          >Request List</router-link
+          >Request List <span class="notifi">{{ requests }}</span></router-link
         >
       </li>
       <li><router-link to="/auth" v-if="!isAuth">Log In</router-link></li>
@@ -31,6 +31,9 @@ export default {
     isCoach() {
       return this.$store.getters.userIsCoach;
     },
+    requests() {
+      return this.$store.getters.numberOfRequests;
+    },
   },
   methods: {
     logout() {
@@ -43,6 +46,7 @@ export default {
 <style scoped>
 div {
   display: flex;
+  width: 100%;
   /* border-bottom: 2rem solid #ccc; */
   /* background: paleturquoise; */
   /* border: 2rem solid red; */
@@ -92,8 +96,15 @@ a {
   border-radius: 0.8rem;
   border: none;
   font-size: 1.3rem;
+  position: relative;
 }
 
+.router-link-active {
+  background-color: red;
+  color: white;
+  border-radius: 0.8rem;
+  border: none;
+}
 .router-link-exact-active {
   background-color: red;
   color: white;
@@ -135,5 +146,13 @@ h1 {
 .logout {
   margin-right: 2rem;
 }
+.notifi {
+  position: absolute;
+  top: -10px;
+  background-color: white;
+  /* border: 2px solid red; */
+  border-radius: 150px;
+  width: 3rem;
+  font-weight: bolder;
+}
 </style>
-rem
