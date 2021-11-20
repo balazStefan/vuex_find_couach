@@ -2,32 +2,35 @@
   <div>
     <h1>Find your coach</h1>
     <form>
-      <label for="Frontend" class="controls-header"> Frontend</label>
-      <input
-        type="checkbox"
-        name="Frontend"
-        id="Frontend"
-        checked
-        @change="setFilterCoach"
-      />
+      <label for="Frontend" class="controls-header">
+        Frontend
+        <input
+          type="checkbox"
+          name="Frontend"
+          id="Frontend"
+          checked
+          @change="setFilterCoach"
+      /></label>
 
-      <label for="Backend" class="controls-header"> Backend</label>
-      <input
-        type="checkbox"
-        name="Backend"
-        id="Backend"
-        checked
-        @change="setFilterCoach"
-      />
+      <label for="Backend" class="controls-header">
+        Backend
+        <input
+          type="checkbox"
+          name="Backend"
+          id="Backend"
+          checked
+          @change="setFilterCoach"
+      /></label>
 
-      <label for="Career" class="controls-header"> Career </label>
-      <input
-        type="checkbox"
-        name="Career"
-        id="Career"
-        checked
-        @change="setFilterCoach"
-      />
+      <label for="Career" class="controls-header">
+        Career
+        <input
+          type="checkbox"
+          name="Career"
+          id="Career"
+          checked
+          @change="setFilterCoach"
+      /></label>
     </form>
   </div>
 </template>
@@ -62,38 +65,32 @@ div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 150px;
-  gap: 10px;
+  height: 15rem;
+  gap: 1rem;
 }
 h1 {
-  margin-top: 20px;
+  margin-top: 2rem;
+  font-size: 3rem;
 }
 
 form {
   color: #555d50;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 2.5rem;
+  font-size: 1.7rem;
 }
 
 label {
-  padding: 6px 1px;
-  margin-top: 10px;
+  padding: 0.6rem 0.1rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
 }
-
 .controls-header {
   cursor: pointer;
-
-  padding: 3px 8px 3px 8px;
-}
-
-.controls-header:hover {
-  font-weight: bold;
 }
 </style>

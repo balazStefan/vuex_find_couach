@@ -15,7 +15,7 @@
       </li>
       <li><router-link to="/auth" v-if="!isAuth">Log In</router-link></li>
       <li>
-        <router-link to="/" v-show="isAuth" @click="logout"
+        <router-link to="/" v-show="isAuth" @click="logout" class="logout"
           >Log out</router-link
         >
       </li>
@@ -43,35 +43,32 @@ export default {
 <style scoped>
 div {
   display: flex;
-
-  /* border-bottom: 2px solid #ccc; */
+  /* border-bottom: 2rem solid #ccc; */
   /* background: paleturquoise; */
-  /* border: 2px solid red; */
+  /* border: 2rem solid red; */
   justify-content: space-between;
   background-color: #021691;
-  /* margin: 10px; */
-  padding: 0px;
-  height: 100px;
+  /* margin: 10rem; */
+  padding: 0rem;
+  height: 10rem;
 }
-
 ul {
   box-sizing: border-box;
-  /* border: 3px solid purple; */
-
-  margin: 0px;
-  padding: 0px;
+  /* border: 3rem solid purple; */
+  margin: 0rem;
+  padding: 0rem;
   list-style: none;
   width: max-content;
   display: flex;
   /* justify-content: flex-end;
   align-items: center; */
-  gap: 50px;
+  gap: 5rem;
   justify-content: center;
 }
 li {
-  /* width: 200px;
-  height: 80px; */
-  /* border: 2px solid green; */
+  /* width: 200rem;
+  height: 80rem; */
+  /* border: 2rem solid green; */
   box-sizing: inherit;
   list-style: none;
   /* background: orange; */
@@ -84,61 +81,59 @@ a {
   font-weight: bolder;
   font-family: inherit;
   cursor: pointer;
-  margin: 0px;
-  border: 1px solid #555d50;
-  padding: 1rem;
+  margin: 0rem;
+  border: 0.1rem solid #555d50;
+  padding: 1.6rem;
   box-sizing: inherit;
   background-color: oldlace;
   justify-content: center;
   align-self: center;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: none;
+  font-size: 1.3rem;
 }
+
 .router-link-exact-active {
   background-color: red;
   color: white;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: none;
 }
-
 h1 {
-  /* border: 2px solid black; */
-  padding: 10px;
-  width: 300px;
+  /* border: 2rem solid black; */
+  padding: 1rem;
+  width: 30rem;
   color: white;
-  margin: 0px;
+  margin: 0rem;
   display: flex;
 }
-
 /******** HOVERING *************/
-/* a:active,
-a:hover,
-a:focus {
-  background: orangered;
-  */
 
 .lastOne {
-  margin-right: 20px;
+  margin-right: 12rem;
 }
 .logo {
   display: flex;
   width: max-content;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   background: transparent;
   color: white;
-  /* border: 2px solid black; */
-  padding: 0px;
-  margin-left: 10px;
+  /* border: 2rem solid black; */
+  padding: 0rem;
+  margin-left: 1rem;
 }
 .logo:active,
 .logo:hover,
 .logo:focus {
   color: white;
   background: transparent;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: none;
   text-decoration: underline whitesmoke;
 }
+.logout {
+  margin-right: 2rem;
+}
 </style>
->
+rem

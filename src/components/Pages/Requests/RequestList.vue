@@ -8,7 +8,7 @@
       <h2>All Requests</h2>
     </base-card>
     <base-spinner v-if="isLoading"></base-spinner>
-    <ul v-if="hasRequestes && !isLoading">
+    <ul v-if="hasRequests && !isLoading">
       <request-item
         v-for="req in receivedRequests"
         :key="req.id"
@@ -16,8 +16,9 @@
         :message="req.message"
       ></request-item>
     </ul>
-
-    <h5 v-else>You haven´t received any requests YET!</h5>
+    <h5 v-show="!hasRequests && !isLoading">
+      You haven´t received any requests YET!
+    </h5>
   </div>
 </template>
 <script>
@@ -35,7 +36,7 @@ export default {
     receivedRequests() {
       return this.$store.getters.requests; // over či je dobrý getter
     },
-    hasRequestes() {
+    hasRequests() {
       return this.$store.getters.hasRequests;
     },
   },
@@ -63,7 +64,8 @@ h5,
 h2 {
   display: flex;
   justify-content: center;
-  padding: 10px;
-  text-decoration: underline;
+  padding: 1rem;
+  font-size: 2rem;
+  text-decoration: none;
 }
 </style>

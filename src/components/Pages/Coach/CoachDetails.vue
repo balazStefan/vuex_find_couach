@@ -57,23 +57,31 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.8rem;
 }
 h2 {
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-size: 2rem;
 }
 p {
-  margin-left: 10px;
+  margin-left: 1.1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #555d50;
 }
 main {
   display: flex;
   flex-direction: column;
+  font-size: 1.8rem;
+  padding: 2rem;
 }
 
 section {
-  text-align: center;
-  margin-top: 15px;
+  margin-top: 1.5rem;
+  width: inherit;
+  padding: 3rem;
+  background-color: whitesmoke;
 }
 .position {
   display: flex;
@@ -82,13 +90,13 @@ section {
 }
 
 button {
-  margin-right: 20px;
-  padding: 5px;
-  margin-bottom: 10px;
+  margin-right: 2rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 .types {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 4rem;
 }
 </style>

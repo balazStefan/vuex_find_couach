@@ -2,10 +2,6 @@ import { createApp, defineAsyncComponent } from "vue";
 import App from "./App.vue";
 import router from "./router.js";
 import store from "./components/store.js";
-// import BaseTypes from "./components/UI/BaseTypes.vue";
-
-// import BaseSpinner from "./components/UI/BaseSpinner.vue";
-// import BaseDialog from "./components/UI/BaseDialog.vue";
 
 const BaseDialog = defineAsyncComponent(() =>
   import("./components/UI/BaseDialog.vue")

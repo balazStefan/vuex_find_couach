@@ -14,10 +14,10 @@
 h2 {
   width: 100%;
   text-align: center;
-  margin: 10px;
+  margin: 1rem;
 }
 p {
-  margin: 10px;
+  margin: 1rem;
   text-align: center;
 }
 </style>

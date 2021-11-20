@@ -4,14 +4,13 @@
       <p>{{ error }}</p>
     </base-dialog>
     <base-dialog :show="isLoading" fixed title="Autentificating...">
-      <!-- <p>Autentificating...</p> -->
+      <!-- <p :show="isLoading">Connecting...</p> -->
       <base-spinner></base-spinner>
     </base-dialog>
-
     <form @submit.prevent="submitForm">
       <base-card>
         <div class="control">
-          <label for="email">EMAIL:</label>
+          <label for="email">Email:</label>
           <input
             type="email"
             placeholder="Your Email adress"
@@ -28,7 +27,7 @@
             v-model.trim="password"
           />
         </div>
-        <p v-if="!formIsValid">You must enter BOTH email and password..</p>
+        <p v-if="!formIsValid">Email or Password is invalid...</p>
         <div class="btns">
           <base-button>{{ submitBtn }}</base-button>
           <base-button type="button" mode="flat" @click="switchAutMode">{{
@@ -91,7 +90,7 @@ export default {
             password: this.password,
           });
         }
-        this.$router.replace("/coaches"); // HERE!!!!!!!!!!!!!§
+        this.$router.replace("/coaches");
       } catch (error) {
         this.error = error.message || "Fail to SignUp...";
       }
@@ -119,45 +118,50 @@ form {
   justify-content: space-between;
   align-items: center;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 input {
-  width: 450px;
-  height: 30px;
-  margin-top: 10px;
-  border: #ccc 1px solid;
-  text-indent: 4px;
+  width: 45rem;
+  height: 3rem;
+  margin-top: 1rem;
+  border: none;
+  border-bottom: 1px solid black;
+  text-indent: 0.4rem;
 }
 button {
-  width: 100px;
-
-  margin-top: 10px;
-  padding: 5px;
-  margin-bottom: 10px;
+  width: 10rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 .control {
   display: flex;
 
-  gap: 10px;
+  gap: 1rem;
 }
 
 label {
-  width: 100px;
-  padding-left: 20px;
+  width: 10rem;
+  padding-left: 2rem;
+  font-weight: bold;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
 }
 .btns {
+  margin-top: 1.5rem;
   display: flex;
   justify-content: center;
-  gap: 50px;
+  align-items: center;
+  gap: 5rem;
 }
 
 p {
   text-align: center;
-  margin: 5px;
-  pad: 10px;
+  margin: 0.5rem;
+  padding: 1rem;
   color: red;
 }
 </style>
+rem

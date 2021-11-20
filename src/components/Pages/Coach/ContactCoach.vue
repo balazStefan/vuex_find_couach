@@ -94,28 +94,31 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
 }
 input {
-  width: 450px;
-  height: 30px;
+  width: 45rem;
+  height: 3rem;
   align-self: center;
-  border: #ccc 1px solid;
+  border: #ccc 0.1rem solid;
+  font-size: 1.5rem;
 }
 textarea {
-  width: 450px;
-  height: 120px;
+  width: 45rem;
+  height: 12rem;
   resize: none;
-  border: #ccc 1px solid;
+  border: #ccc 0.1rem solid;
+  font-size: 1.5rem;
 }
 
 button {
-  width: 100px;
+  width: 10rem;
   align-self: center;
-  margin-top: 10px;
-  padding: 5px;
-  margin-bottom: 10px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .contact-control {
@@ -135,9 +138,9 @@ button {
 }
 
 .contact--control_email {
-  border-bottom: 1px solid #555d50;
+  border-bottom: 0.1rem solid #555d50;
 }
 .contact--control_email:focus {
-  border-bottom: 1px solid #555d50;
+  border-bottom: 0.1rem solid #555d50;
 }
 </style>

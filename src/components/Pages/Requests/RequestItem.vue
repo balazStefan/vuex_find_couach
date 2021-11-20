@@ -3,11 +3,11 @@
     <base-card>
       <div>
         <header>
-          <p class="email__position"><strong>Email from:</strong></p>
-          <a :href="emailLink">{{ email }}</a>
+          <p><strong>Email from:</strong></p>
+          <a :href="emailLink" class="email">{{ email }}</a>
         </header>
         <section>
-          <p><strong>Message:</strong></p>
+          <p class="message"><strong>Message:</strong></p>
           <p>{{ message }}</p>
         </section>
       </div>
@@ -26,12 +26,25 @@ export default {
 };
 </script>
 <style scoped>
+div {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
 header {
   display: flex;
-  gap: 10px;
-  padding: 10px;
+  gap: 1rem;
+  padding: 1rem;
 }
 section {
-  padding: 10px;
+  padding: 1rem;
+}
+a {
+  text-decoration: none;
+}
+.message {
+  margin-bottom: 1rem;
+}
+.email {
+  color: darkblue;
 }
 </style>

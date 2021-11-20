@@ -87,10 +87,10 @@ export default {
 </script>
 <style scoped>
 button {
-  width: 100px;
-  padding: 6px;
+  width: 10rem;
+  padding: 0.6rem;
   align-self: flex-start;
-  margin-left: 20px;
-  margin-bottom: 15px;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
 }
 </style>

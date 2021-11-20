@@ -184,29 +184,30 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
-  padding: 30px;
+  padding: 3rem;
   height: fit-content;
-  gap: 10px;
+  gap: 1rem;
   color: #555d50;
 }
 h2 {
   text-align: center;
-  margin-top: 15px;
-  padding: 10px;
+  margin-top: 1.5rem;
+  font-size: 2.2rem;
+  padding: 1rem;
   text-decoration: underline;
 }
 input {
-  height: 30px;
-  text-indent: 5px;
+  height: 3rem;
+  text-indent: 0.5rem;
   color: black;
-  font-size: 1rem;
+  font-size: 1.5rem;
   border: none;
-  border-bottom: 1px dashed #555d50;
-  padding-top: 3px;
+  border-bottom: 0.1rem dashed #555d50;
+  padding-top: 0.3rem;
 }
 form input:focus {
   border: none;
-  border-bottom: 1px dashed #555d50;
+  border-bottom: 0.1rem dashed #555d50;
   outline: none;
 }
 input::selection {
@@ -216,9 +217,9 @@ input::selection {
 
 textarea {
   resize: none;
-  text-indent: 5px;
+  text-indent: 0.5rem;
   color: black;
-  font-size: 1rem;
+  font-size: 1.5rem;
   border: none;
 }
 textarea:focus {
@@ -231,16 +232,17 @@ textarea::selection {
 }
 p {
   align-self: center;
-  margin-top: 10px;
+  margin-top: 1rem;
+  font-size: 1.5rem;
 }
 button {
   position: relative;
   box-shadow: none;
   z-index: 2;
   align-self: center;
-  margin-top: 10px;
-  padding: 10px 30px;
-  margin-bottom: 10px;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  margin-bottom: 1rem;
 }
 button::before {
   content: "";
@@ -251,8 +253,8 @@ button::before {
   right: 0%;
   bottom: 0%;
   z-index: -1;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  border-left: 0.1rem solid #555d50;
+  border-bottom: 0.1rem solid #555d50;
 }
 button::after {
   content: "";
@@ -263,8 +265,8 @@ button::after {
   right: 0%;
   bottom: 50%;
   z-index: -1;
-  border-top: 2px solid black;
-  border-right: 2px solid black;
+  border-top: 0.1rem solid #555d50;
+  border-right: 0.1rem solid #555d50;
 }
 button:hover::before {
   content: "";
@@ -275,8 +277,8 @@ button:hover::before {
   right: 0%;
   bottom: 0%;
   z-index: -1;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  border-left: 0.1rem solid #555d50;
+  border-bottom: 0.1rem solid #555d50;
   animation: hoverbtnbefore 0.5s forwards;
 }
 button:hover::after {
@@ -288,8 +290,8 @@ button:hover::after {
   right: 0%;
   bottom: 50%;
   z-index: -1;
-  border-top: 2px solid black;
-  border-right: 2px solid black;
+  border-top: 0.1rem solid #555d50;
+  border-right: 0.1rem solid #555d50;
   animation: hoverbtnafter 0.5s forwards;
 }
 
@@ -321,25 +323,27 @@ button:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 9px;
-  margin-top: 20px;
+  gap: 0.9rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
 }
 .money-label {
   cursor: pointer;
-
+  font-size: 1.5rem;
   width: max-content;
-  padding-right: 20px;
+  padding-right: 2rem;
 
   text-align: left;
 }
 .money {
-  width: 80px;
+  width: 8rem;
   border: none;
-
+  font-size: 1.5rem;
   font-size: 0.9rem;
-  text-indent: 10px;
+  text-indent: 1rem;
   text-align: center;
   cursor: pointer;
+  font-size: 1.5rem;
 }
 
 .money:focus,
@@ -352,7 +356,9 @@ button:hover::after {
 .input-controls {
   cursor: pointer;
 }
-
+label {
+  font-size: 1.5rem;
+}
 /*----------------------VALIDATACIA */
 
 .isInvalid {

@@ -9,12 +9,12 @@ export default {};
 </script>
 <style scoped>
 div {
-  width: 650px;
+  width: 65rem;
   height: fit-content;
-  margin: 50px auto;
+  margin: 5rem auto;
   color: #555d50;
-  box-shadow: 8px 4px #ccc;
-  border-radius: 9px;
-  border: 1px solid #ccc;
+  box-shadow: 0.8rem 0.4rem #ccc;
+  border-radius: 0.9rem;
+  border: 0.1rem solid #ccc;
 }
 </style>

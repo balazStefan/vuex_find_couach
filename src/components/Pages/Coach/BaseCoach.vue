@@ -8,8 +8,12 @@
       <base-types v-for="type in types" :key="type" :type="type"> </base-types>
     </main>
     <footer>
-      <router-link :to="coachDetails">Details</router-link>
-      <router-link :to="linkToContact">Contact</router-link>
+      <base-button
+        ><router-link :to="coachDetails">Details</router-link></base-button
+      >
+      <base-button>
+        <router-link :to="linkToContact">Contact</router-link></base-button
+      >
     </footer>
   </base-card>
 </template>
@@ -32,36 +36,37 @@ export default {
 </script>
 <style scoped>
 h3 {
-  margin: 10px;
-  padding: 8px;
+  margin: 1rem;
+  margin-bottom: 0rem;
+  padding: 0.8rem;
+  font-size: 2rem;
 }
 p {
-  margin-left: 25px;
+  margin-left: 2.5rem;
+  font-size: 1.7rem;
 }
 
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 2.5rem;
 }
 
 footer {
   display: flex;
-  gap: 20px;
+  gap: 2rem;
   justify-content: flex-end;
 }
 button {
-  padding: 5px 10px;
-  margin: 10px 0px;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0rem;
 }
 button:nth-child(2) {
-  margin-right: 20px;
+  margin-right: 2rem;
 }
-section {
-  padding: 10px;
-
-  margin-top: 10px;
-  align-self: center;
+a {
+  text-decoration: none;
 }
 </style>
+rem

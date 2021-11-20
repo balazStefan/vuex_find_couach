@@ -9,44 +9,7 @@ const store = createStore({
       userId: null,
       token: null,
       didAutoLogout: false,
-      coaches: [
-        {
-          id: "stefan",
-          name: "Štefan Baláž",
-          email: "stevobko123@gmail.com",
-          money: 35,
-          types: ["Frontend", "Backend", "Career"],
-          description:
-            "Moje meno je Štefan Baláž , venujem sa FrontEnd Dizajnu niečo okolo 10 mesiacov, v poslednej dobe ale oveľa aktívnejšie",
-        },
-        {
-          id: "vava",
-          name: "Vanessa Revická",
-          email: "vava@gmail.com",
-          money: 45,
-          types: ["Backend", "Career"],
-          description:
-            "Moje meno je Vanessa , pracujem pre spoločnosť Yangfeng od polovice roku 2021",
-        },
-        {
-          id: "tobi",
-          name: "Tobias Ďuriš",
-          email: "tobino@gmail.com",
-          money: 105,
-          types: ["Backend"],
-          description:
-            "Moje meno je Tobinko, mojou prácou je byť rozkošný a rád pozujem na fotky ",
-        },
-        {
-          id: "romi",
-          name: "Romana Revická",
-          email: "romi@gmail.com",
-          money: 50,
-          types: ["Frontend", "Career"],
-          description:
-            "Moje meno je Romana, som aktuálne nezamestnaná, a som žena v domácnosti  ",
-        },
-      ],
+      coaches: [],
     };
   },
   getters: {
@@ -173,9 +136,6 @@ const store = createStore({
     },
     async contactCoach(context, payload) {
       const newRequest = {
-        // id: new Date().toISOString(),
-        // coachId: payload.coachId,
-
         email: payload.email,
         message: payload.message,
       };
@@ -194,11 +154,9 @@ const store = createStore({
         );
         throw error;
       }
-      // console.log(payload);
       newRequest.id = responseData.name;
       newRequest.coachId = payload.coachId;
       console.log(context);
-      // console.log(responseData.coachId); // responseData.name, nakoľko firebase, generuje nové ID pre rq a má to pod. name a pomocou newReq.id pridávam do poľa novú položku ale až po tom keĎ nám príde späť z firebae
       context.commit("addRequest", newRequest);
     },
     async fetchRequests(context) {
@@ -216,12 +174,11 @@ const store = createStore({
         );
         throw error;
       }
-      // vytvorím si helpera, nakoľko príde odpoveď z firebase v tvare ktorý musíme najprv pretvoriť aby vyzeral ako req
       const requests = [];
       for (const key in responseData) {
         const request = {
           id: key,
-          coachId: coachId, //-----------------------CYHBA BOLA TU mal som tam this.
+          coachId: coachId,
           email: responseData[key].email,
           message: responseData[key].message,
         };

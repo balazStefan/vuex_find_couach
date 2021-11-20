@@ -31,6 +31,11 @@ export default {
 };
 </script>
 <style>
+:root,
+*::before,
+*::after {
+  font-size: 62.5%;
+}
 *,
 *::before,
 *::after {

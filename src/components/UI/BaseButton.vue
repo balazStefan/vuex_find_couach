@@ -12,7 +12,7 @@ button {
   text-transform: uppercase;
   text-align: center;
   height: max-content;
-  box-shadow: 4px 2px #ccc;
+  box-shadow: 0.4rem 0.2rem #ccc;
   cursor: pointer;
   border: none;
   color: #555d50;

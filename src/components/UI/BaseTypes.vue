@@ -10,20 +10,23 @@ export default {
 /*--------------------COLOR OF SPANS--------------- */
 
 span {
-  padding: 6px;
-  border-radius: 8px;
-  box-shadow: 4px 4px #ccc;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  box-shadow: 0.4rem 0.4rem #ccc;
 }
 .Frontend {
   background-color: lightgreen;
-  color: black;
+  color: #555d50;
 }
 .Backend {
   background-color: lightpink;
-  color: black;
+  color: #555d50;
 }
 .Career {
   background-color: lightskyblue;
-  color: black;
+  color: #555d50;
 }
 </style>

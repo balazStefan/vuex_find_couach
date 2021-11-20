@@ -69,9 +69,9 @@ dialog {
   left: 10%;
   width: 80%;
   z-index: 100;
-  border-radius: 12px;
+  border-radius: 1.2rem;
   border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.26);
   padding: 0;
   margin: 0;
   overflow: hidden;
