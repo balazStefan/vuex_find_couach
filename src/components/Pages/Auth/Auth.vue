@@ -4,7 +4,6 @@
       <p>{{ error }}</p>
     </base-dialog>
     <base-dialog :show="isLoading" fixed title="Autentificating...">
-      <!-- <p :show="isLoading">Connecting...</p> -->
       <base-spinner></base-spinner>
     </base-dialog>
     <form @submit.prevent="submitForm">
@@ -15,8 +14,9 @@
             type="email"
             placeholder="Your Email adress"
             id="email"
-            v-model.trim="email"
+            v-model.trim="email.value"
           />
+          <p v-if="!this.email.isValid">Bad emailAdress..</p>
         </div>
         <div class="control">
           <label for="password">Password:</label>
@@ -24,15 +24,25 @@
             type="password"
             placeholder="********"
             id="password"
-            v-model.trim="password"
+            v-model.trim="password.value"
           />
+          <p v-if="!this.password.isValid">Bad Password..</p>
         </div>
-        <p v-if="!formIsValid">Email or Password is invalid...</p>
+        <p v-if="!formIsValid">
+          Email or Password is invalid...(Password must have min.(8 characters)
+        </p>
         <div class="btns">
-          <base-button>{{ submitBtn }}</base-button>
-          <base-button type="button" mode="flat" @click="switchAutMode">{{
-            switchBtn
-          }}</base-button>
+          <base-button
+            :class="{ signUp: mode == 'signup', signIn: mode == 'login' }"
+            >{{ submitBtn }}</base-button
+          >
+          <base-button
+            type="button"
+            mode="flat"
+            @click="switchAutMode"
+            :class="{ signUp: mode == 'login', signIn: mode == 'signup' }"
+            >{{ switchBtn }}</base-button
+          >
         </div>
       </base-card>
     </form>
@@ -42,8 +52,14 @@
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+      email: {
+        value: "",
+        isValid: true,
+      },
+      password: {
+        value: "",
+        isValid: true,
+      },
       formIsValid: true,
       mode: "login",
       isLoading: false,
@@ -69,25 +85,27 @@ export default {
   methods: {
     async submitForm() {
       this.formIsValid = true;
+
       if (
-        this.email === "" ||
-        !this.email.includes("@") ||
-        this.password.length < 8
+        this.email.value === "" ||
+        !this.email.value.includes("@") ||
+        this.password.value.length < 8
       ) {
         this.formIsValid = false;
+
         return;
       }
       this.isLoading = true;
       try {
         if (this.mode === "login") {
           await this.$store.dispatch("login", {
-            email: this.email,
-            password: this.password,
+            email: this.email.value,
+            password: this.password.value,
           });
         } else {
           await this.$store.dispatch("signUp", {
-            email: this.email,
-            password: this.password,
+            email: this.email.value,
+            password: this.password.value,
           });
         }
         this.$router.replace("/coaches");
@@ -111,6 +129,9 @@ export default {
 };
 </script>
 <style scoped>
+div {
+  margin: auto;
+}
 form {
   width: inherit;
   display: flex;
@@ -137,6 +158,7 @@ button {
 }
 .control {
   display: flex;
+  justify-content: center;
 
   gap: 1rem;
 }
@@ -163,5 +185,34 @@ p {
   padding: 1rem;
   color: red;
 }
+
+.signUp {
+  background: rgb(242, 0, 0);
+  background: linear-gradient(
+    107deg,
+    rgba(242, 0, 0, 1) 17%,
+    rgba(249, 0, 0, 0.9531162806919643) 50%,
+    rgba(244, 244, 244, 0.7458333675266982) 79%
+  );
+  color: black;
+}
+.signIn {
+  background: rgb(45, 40, 219);
+  background: linear-gradient(
+    75deg,
+    rgba(45, 40, 219, 1) 19%,
+    rgba(14, 89, 235, 0.6758053563222164) 27%,
+    rgba(249, 249, 249, 0.5105392498796393) 62%
+  );
+  color: black;
+}
+/* .colorized {
+  background: rgb(30, 235, 14);
+  background: linear-gradient(
+    17deg,
+    rgba(30, 235, 14, 1) 43%,
+    rgba(233, 233, 233, 0) 47%,
+    rgba(249, 0, 0, 1) 51%
+  );
+} */
 </style>
-rem

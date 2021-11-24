@@ -143,4 +143,35 @@ button {
 .contact--control_email:focus {
   border-bottom: 0.1rem solid #555d50;
 }
+button::before {
+  content: "";
+  position: absolute;
+  background: rgb(224, 42, 42);
+  background: linear-gradient(
+    107deg,
+    rgba(224, 42, 42, 0.8382703423166141) 17%,
+    rgba(215, 59, 25, 0.465721322708771) 39%,
+    rgba(244, 244, 244, 0.7458333675266982) 74%
+  );
+  top: 0%;
+  left: 0;
+  z-index: -10;
+  width: 3%;
+  height: 100%;
+  transition: all 0.8s ease-in-out;
+}
+button:hover::before {
+  background: rgb(224, 42, 42);
+  background: linear-gradient(
+    107deg,
+    rgba(224, 42, 42, 0.8382703423166141) 17%,
+    rgba(215, 59, 25, 0.465721322708771) 39%,
+    rgba(244, 244, 244, 0.7458333675266982) 74%
+  );
+  top: 0%;
+  left: 0;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+}
 </style>

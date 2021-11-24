@@ -89,4 +89,9 @@ h2 {
   font-size: 2rem;
   text-decoration: none;
 }
+.bell {
+  position: relative;
+  width: 250px;
+  height: auto;
+}
 </style>

@@ -6,7 +6,9 @@
     </base-dialog>
     <base-card>
       <coach-filter @change-filter="setFilter"></coach-filter>
-      <base-button @click="loadCoaches(true)">Refresh</base-button>
+      <base-button @click="loadCoaches(true)" class="hovering"
+        >Refresh</base-button
+      >
     </base-card>
     <div v-if="isLoading">
       <base-spinner></base-spinner>
@@ -92,5 +94,41 @@ button {
   align-self: flex-start;
   margin-left: 2rem;
   margin-bottom: 1.5rem;
+}
+
+.hovering {
+  position: relative;
+  background: white;
+  transition: all 1s ease-in-out;
+  border: outset 3px;
+  box-shadow: none;
+  color: black;
+}
+
+.hovering::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 50%;
+  width: 10%;
+  height: 100%;
+  z-index: -1;
+  background: white;
+  transition: all 2.6s ease-in-out;
+  transform-origin: center;
+}
+
+.hovering:hover::before {
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    75deg,
+    rgba(255, 0, 0, 1) 6%,
+    rgba(255, 255, 255, 0) 48%,
+    rgba(247, 0, 30, 0.7682423311121324) 93%
+  );
+  z-index: -2;
+  width: 100%;
+  left: 0%;
+  opacity: 1;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Find your coach</h1>
+    <h1 class="typing">Find your coach</h1>
     <form>
       <label for="Frontend" class="controls-header">
         Frontend
@@ -92,5 +92,31 @@ label {
 }
 .controls-header {
   cursor: pointer;
+}
+.typing {
+  border-right: 3px solid #555d50;
+  letter-spacing: 0.4rem;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3.5s steps(30), borderLine 0.5s step-end infinite;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 40%;
+  }
+}
+
+@keyframes borderLine {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #555d50;
+  }
 }
 </style>

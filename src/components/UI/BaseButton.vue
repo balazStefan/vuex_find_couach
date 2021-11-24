@@ -12,10 +12,12 @@ button {
   text-transform: uppercase;
   text-align: center;
   height: max-content;
-  box-shadow: 0.4rem 0.2rem #ccc;
+  /* box-shadow: 0.4rem 0.2rem #ccc; */
+
   cursor: pointer;
   border: none;
   color: #555d50;
+  border: outset 3px #ccc;
   background-color: #e8e8e8;
   position: relative;
   z-index: 6;

@@ -65,6 +65,7 @@ export default {
 
 dialog {
   position: fixed;
+  font-size: 1.5rem;
   top: 20vh;
   left: 10%;
   width: 80%;
@@ -102,8 +103,8 @@ menu {
 
 @media (min-width: 768px) {
   dialog {
-    left: calc(50% - 20rem);
-    width: 40rem;
+    left: calc(50% - 50rem);
+    width: 100rem;
   }
 }
 

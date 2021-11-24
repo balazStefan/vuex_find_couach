@@ -1,5 +1,5 @@
 <template>
-  <base-card>
+  <base-card class="active">
     <header>
       <h3>{{ name }}</h3>
       <p>{{ money }}€/1h</p>
@@ -57,6 +57,7 @@ footer {
   display: flex;
   gap: 2rem;
   justify-content: flex-end;
+  color: black;
 }
 button {
   padding: 0.5rem 1rem;
@@ -67,6 +68,48 @@ button:nth-child(2) {
 }
 a {
   text-decoration: none;
+  color: black;
+  position: relative;
+  z-index: 5;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  background: rgb(224, 121, 42);
+  background: linear-gradient(
+    107deg,
+    rgba(224, 121, 42, 0.8382703423166141) 17%,
+    rgba(215, 130, 25, 0.465721322708771) 39%,
+    rgba(244, 244, 244, 0.7458333675266982) 74%
+  );
+  top: 0%;
+  left: 0;
+  z-index: -10;
+  width: 3%;
+  height: 100%;
+  transition: all 0.8s ease-in-out;
+}
+button:hover::before {
+  background: rgb(224, 121, 42);
+  background: linear-gradient(
+    107deg,
+    rgba(224, 121, 42, 0.8382703423166141) 17%,
+    rgba(215, 130, 25, 0.465721322708771) 39%,
+    rgba(244, 244, 244, 0.7458333675266982) 74%
+  );
+  top: 0%;
+  left: 0;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+}
+
+.active {
+  transition: all 1s;
+}
+.active:hover {
+  transform: translateY(-5px);
 }
 </style>
 rem

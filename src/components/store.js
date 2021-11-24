@@ -216,7 +216,7 @@ const store = createStore({
       if (!response.ok) {
         const error = new Error(
           responseData.message ||
-            "Fail to  Sign Up .. This Email adress is used..."
+            "We can´t log you into app... Something went wrong"
         );
         throw error;
       }
@@ -247,7 +247,7 @@ const store = createStore({
 
         const error = new Error(
           responseData.message ||
-            "Fail to  Sign Up .. This Email adress is used..."
+            "Fail to Sign Up .. Do you wanna Register instead ? "
         );
         throw error;
       }

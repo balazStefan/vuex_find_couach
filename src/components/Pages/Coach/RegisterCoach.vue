@@ -237,86 +237,74 @@ p {
 }
 button {
   position: relative;
-  box-shadow: none;
+  /* box-shadow: none; */
+  border-radius: 0.8rem;
   z-index: 2;
   align-self: center;
   margin-top: 1rem;
   padding: 1rem 3rem;
   margin-bottom: 1rem;
+  transition: all 1s;
+  transition-delay: 0.2s;
 }
+button:hover {
+  color: white;
+}
+
 button::before {
   content: "";
   position: absolute;
-  width: 15%;
-  top: 65%;
+  border-radius: 0.8rem;
+  opacity: 0.5;
+  width: 0%; /*začiatok animácie */
+  top: 90%;
   left: 0%;
   right: 0%;
   bottom: 0%;
   z-index: -1;
-  border-left: 0.2rem solid black;
-  border-bottom: 0.2rem solid black;
-}
-button::after {
-  content: "";
-  position: absolute;
-  width: 15%;
-  top: 0%;
-  left: 85%;
-  right: 0%;
-  bottom: 50%;
-  z-index: -1;
-  border-top: 0.2rem solid black;
-  border-right: 0.2rem solid black;
+  background: red;
+
+  color: white;
+  transition: all 0.7s ease-in;
 }
 button:hover::before {
   content: "";
   position: absolute;
-  width: 15%;
-  top: 65%;
+  opacity: 1;
+  width: 100%;
+  top: 0%;
   left: 0%;
   right: 0%;
   bottom: 0%;
   z-index: -1;
-  border-left: 0.2rem solid black;
-  border-bottom: 0.2rem solid black;
-  animation: hoverbtnbefore 0.5s forwards;
+  background: red;
 }
+button::after {
+  border-radius: 0.8rem;
+  content: "";
+  opacity: 0.5;
+  position: absolute;
+  width: 0%;
+  top: 0%;
+  left: 100%; /*začiatok animácie*/
+  right: 0%;
+  bottom: 90%; /*začiatok animácie*/
+  z-index: -1;
+  background: red;
+  color: white;
+  transition: all 0.7s ease-in;
+}
+
 button:hover::after {
+  opacity: 1;
   content: "";
   position: absolute;
-  width: 15%;
+  width: 100%;
   top: 0%;
-  left: 85%;
+  left: 0%;
   right: 0%;
-  bottom: 50%;
+  bottom: 0%;
   z-index: -1;
-  border-top: 0.2rem solid black;
-  border-right: 0.2rem solid black;
-  animation: hoverbtnafter 0.5s forwards;
-}
-
-@keyframes hoverbtnafter {
-  0% {
-    width: 15%;
-    left: 85%;
-    bottom: 50%;
-  }
-  100% {
-    width: 100%;
-    left: 0%;
-    bottom: 0%;
-  }
-}
-
-@keyframes hoverbtnbefore {
-  0% {
-    width: 15%;
-    top: 65%;
-  }
-  100% {
-    width: 100%;
-    top: 0%;
-  }
 }
 
 .controls {
@@ -359,8 +347,11 @@ button:hover::after {
 label {
   font-size: 1.5rem;
 }
-/*----------------------VALIDATACIA */
 
+/*----------------------VALIDATACIA */
+.btnColor {
+  color: black;
+}
 .isInvalid {
   color: orangered;
 }

@@ -18,6 +18,9 @@ const BaseTypes = defineAsyncComponent(() =>
 const BaseSpinner = defineAsyncComponent(() =>
   import("./components/UI/BaseSpinner.vue")
 );
+const LoginCard = defineAsyncComponent(() =>
+  import("./components/UI/LoginCard.vue")
+);
 
 const app = createApp(App);
 app.use(router);
@@ -27,4 +30,5 @@ app.component("base-button", BaseButton);
 app.component("base-card", BaseCard);
 app.component("base-types", BaseTypes);
 app.component("base-spinner", BaseSpinner);
+app.component("login-card", LoginCard);
 app.mount("#app");

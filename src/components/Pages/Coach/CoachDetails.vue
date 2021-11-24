@@ -12,9 +12,12 @@
         <section>{{ desc }}</section>
       </main>
       <base-button class="backHome" @click="homepage">All Coaches</base-button>
-      <!-- <div class="position">
-        <router-link :to="linkToContact">Contact</router-link>
-      </div> -->
+      <base-button
+        @click="contact"
+        class="backHome"
+        :class="{ dismiss: clicked }"
+        >Contact Coach</base-button
+      >
     </base-card>
     <router-view></router-view>
   </div>
@@ -25,6 +28,7 @@ export default {
   data() {
     return {
       selectedCoach: null,
+      clicked: false,
     };
   },
   computed: {
@@ -53,6 +57,11 @@ export default {
   methods: {
     homepage() {
       return this.$router.replace("/");
+    },
+    contact() {
+      const coachId = this.$route.params.id;
+      this.clicked = true;
+      return this.$router.replace("/coaches/" + `${coachId}` + "/contact");
     },
   },
 };
@@ -88,6 +97,7 @@ section {
   width: inherit;
   padding: 3rem;
   background-color: whitesmoke;
+  /* border: outset 5px #ccc; */
 }
 .position {
   display: flex;
@@ -110,5 +120,39 @@ button {
   margin: auto;
   margin-bottom: 2rem;
   margin-top: 2rem;
+}
+.dismiss {
+  opacity: 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  background: rgb(224, 121, 42);
+  background: linear-gradient(
+    107deg,
+    rgba(224, 121, 42, 0.8382703423166141) 17%,
+    rgba(215, 130, 25, 0.465721322708771) 39%,
+    rgba(244, 244, 244, 0.7458333675266982) 74%
+  );
+  top: 0%;
+  left: 0;
+  z-index: -10;
+  width: 3%;
+  height: 100%;
+  transition: all 0.8s ease-in-out;
+}
+button:hover::before {
+  background: rgb(224, 121, 42);
+  background: linear-gradient(
+    107deg,
+    rgba(224, 121, 42, 0.8382703423166141) 17%,
+    rgba(215, 130, 25, 0.465721322708771) 39%,
+    rgba(244, 244, 244, 0.7458333675266982) 74%
+  );
+  top: 0%;
+  left: 0;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
 }
 </style>
