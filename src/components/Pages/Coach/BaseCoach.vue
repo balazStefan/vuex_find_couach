@@ -19,8 +19,6 @@
 </template>
 
 <script>
-// import ContactCoach from "./ContactCoach.vue";
-
 export default {
   props: ["name", "desc", "types", "money", "id"],
 

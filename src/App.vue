@@ -1,19 +1,21 @@
 <template>
   <div class="wrapper">
-    <the-header></the-header>
-    <router-view v-slot="slotProps">
+    <the-header class="h"></the-header>
+    <router-view v-slot="slotProps" class="m">
       <transition name="route" mode="out-in">
         <component :is="slotProps.Component"></component
       ></transition>
+      <the-footer class="f"></the-footer>
     </router-view>
   </div>
 </template>
 
 <script>
 import TheHeader from "./components/UI/TheHeader.vue";
+import TheFooter from "./components/UI/TheFooter.vue";
 
 export default {
-  components: { TheHeader },
+  components: { TheHeader, TheFooter },
   created() {
     this.$store.dispatch("autoLogIn");
   },
@@ -45,25 +47,14 @@ export default {
   box-sizing: border-box;
   color: #555d50;
 }
-body {
+div {
   width: 100%;
   font-family: sans-serif;
-
-  /* background: linear-gradient(
-      342deg,
-      rgba(13, 9, 1, 0.9139005944174545) 0%,
-      rgba(0, 8, 7, 0.8438725832129726) 26%,
-      rgba(21, 14, 123, 0.846673703661152) 32%,
-      rgba(24, 212, 188, 0.8438725832129726) 52%,
-      rgba(0, 0, 0, 0.8578781854538691) 52%,
-      rgba(220, 147, 2, 0.7682423311121324) 87%
-    ); */
-  /* background: rgb(255,255,255);
-background: linear-gradient(344deg, rgba(255,255,255,0.2164216028208158) 0%, rgba(84,75,96,1) 33%, rgba(4,24,34,0.1407913507199755) 49%, rgba(43,84,194,1) 69%);
-} */
 }
 html {
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 body {
   background: rgb(255, 170, 0);
@@ -80,7 +71,15 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-auto-columns: minmax(100px, auto);
+  grid-template-areas:
+    "h h h h h h h h h h h"
+    "m m m m m m m m m m m"
+    "f f f f f f f f f f f";
+}
 /*--------------------------------ANIMACIA:-route-styling ---------------------------*/
 
 .route-enter-from {
@@ -102,5 +101,19 @@ body {
 .route-enter-to {
   opacity: 1;
   transform: translateY(0px);
+}
+.h {
+  grid-area: h;
+  grid-column: 1/12;
+  grid-row: 1/2;
+}
+.m {
+  grid-area: m;
+  grid-column-start: 2;
+  grid-column-end: 11;
+  grid-row: 2/2;
+}
+.f {
+  grid-area: f;
 }
 </style>

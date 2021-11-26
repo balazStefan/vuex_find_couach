@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1><router-link class="logo" to="/">Find a coach</router-link></h1>
+    <h1>
+      <router-link class="logo" to="/">Find a coach</router-link>
+    </h1>
     <ul>
       <li>
         <router-link to="/coaches" class="hoverNav">Couches List</router-link>
@@ -47,7 +49,7 @@ export default {
       return this.$store.getters.isAutentificated;
     },
     isCoach() {
-      return this.$store.getters.userIsCoach;
+      return this.$store.getters.isCoach;
     },
     requests() {
       return this.$store.getters.numberOfRequests;
@@ -55,9 +57,13 @@ export default {
     hasRequests() {
       return this.$store.getters.hasRequests;
     },
+    isRegistreated() {
+      return this.$store.getters.getReg;
+    },
   },
   methods: {
     logout() {
+      console.log(this.isCoach);
       this.$store.dispatch("logout");
       this.$router.replace("/coaches");
     },
@@ -67,30 +73,18 @@ export default {
 </script>
 <style scoped>
 div {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  border: 2px solid black;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(100px, auto);
-  /* border: 2px solid white; */
-  box-sizing: border-box;
-  /* gap: 20rem; */
 }
 h1 {
   color: white;
-  /* border: 2px solid lime; */
-  /* display: flex; */
-
-  /* justify-self: baseline;
-  align-self: center; */
 }
 ul {
   display: flex;
-  /* justify-content: flex-end; */
-  justify-self: flex-end;
-  border: 2px solid white;
+  justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
+  gap: 3rem;
   box-sizing: border-box;
   padding: 0rem;
   list-style: none;
@@ -141,6 +135,14 @@ span {
   border-radius: 0.8rem;
   border: none;
   box-shadow: 0.4rem 0.2rem #dc143c;
+}
+.l {
+  grid-area: l;
+  grid-column: 1/3;
+}
+.n {
+  grid-area: n;
+  grid-column: 5/12;
 }
 
 /******** HOVERING *************/

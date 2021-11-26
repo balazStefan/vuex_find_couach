@@ -150,7 +150,7 @@ export default {
         this.inputMsg.isValid = false;
         this.formIsValid = false;
       }
-      if (!this.inputMoney.value || this.inputMoney.value <= 5) {
+      if (!this.inputMoney.value || this.inputMoney.value < 5) {
         this.inputMoney.isValid = false;
         this.formIsValid = false;
       }
@@ -256,7 +256,7 @@ button::before {
   position: absolute;
   border-radius: 0.8rem;
   opacity: 0.5;
-  width: 0%; /*začiatok animácie */
+  width: 0%;
   top: 90%;
   left: 0%;
   right: 0%;
@@ -286,9 +286,9 @@ button::after {
   position: absolute;
   width: 0%;
   top: 0%;
-  left: 100%; /*začiatok animácie*/
+  left: 100%;
   right: 0%;
-  bottom: 90%; /*začiatok animácie*/
+  bottom: 90%;
   z-index: -1;
   background: red;
   color: white;

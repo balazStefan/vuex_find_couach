@@ -1,12 +1,5 @@
-// import { defineAsyncComponent } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import CoachesList from "./components/Pages/Coach/CoachesList.vue";
-// import RequestList from "./components/Pages/Requests/RequestList.vue";
-// import RegisterCoach from "./components/Pages/Coach/RegisterCoach.vue";
-// import NotFound from "./components/Pages/NotFound.vue";
-// import CoachDetails from "./components/Pages/Coach/CoachDetails.vue";
-// import ContactCoach from "./components/Pages/Coach/ContactCoach.vue";
-// import Auth from "./components/Pages/Auth/Auth.vue";
 import store from "./components/store.js";
 
 const CoachDetails = () => import("./components/Pages/Coach/CoachDetails.vue");

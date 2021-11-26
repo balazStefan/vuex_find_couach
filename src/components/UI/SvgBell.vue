@@ -1,5 +1,4 @@
 <template>
-  <!-- <?xml version="1.0" ?> -->
   <svg
     class="bell"
     fill="requestNumber"
@@ -25,6 +24,5 @@ svg {
   right: -7px;
   fill: lime;
   background-color: transparent;
-  /* border: 1px solid black; */
 }
 </style>

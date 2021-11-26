@@ -1,23 +1,21 @@
 <template>
   <li>
-    <transition leave-active-class="leave">
-      <base-card :class="{ leave: isDelete }">
-        <div>
-          <header>
-            <p><strong>Email from:</strong></p>
-            <a :href="emailLink" class="email">{{ email }}</a>
-          </header>
-          <section>
-            <p class="message"><strong>Message:</strong></p>
-            <p class="message">{{ message }}</p>
-          </section>
-        </div>
-        <footer>
-          <base-button @click="deleteReq">Delete</base-button>
-          <base-button @click="reply">Reply</base-button>
-        </footer>
-      </base-card>
-    </transition>
+    <base-card :class="{ leave: isDelete }">
+      <div>
+        <header>
+          <p><strong>Email from:</strong></p>
+          <a :href="emailLink" class="email">{{ email }}</a>
+        </header>
+        <section>
+          <p class="message"><strong>Message:</strong></p>
+          <p class="message">{{ message }}</p>
+        </section>
+      </div>
+      <footer>
+        <base-button @click="deleteReq">Delete</base-button>
+        <base-button @click="reply">Reply</base-button>
+      </footer>
+    </base-card>
   </li>
 </template>
 <script>
@@ -66,7 +64,6 @@ a {
 }
 .message {
   margin-bottom: 1rem;
-  /* border: 2px solid black; */
 }
 .email {
   color: darkblue;
@@ -84,17 +81,6 @@ button {
 .leave {
   animation: deleting 2s ease-out;
 }
-/* .req-leave-from {
-  transform: translateX(0px);
-  opacity: 1;
-}
-.req-leave-active {
-  transition: all 1s ease-out;
-} 
-/* .req-leave-to {
-  transform: translateX(-30px);
-  opacity: 0;
-} */
 
 @keyframes deleting {
   0% {

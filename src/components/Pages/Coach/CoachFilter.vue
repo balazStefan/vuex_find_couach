@@ -49,7 +49,6 @@ export default {
 
   methods: {
     setFilterCoach(event) {
-      // klik na zmmenu
       const inputId = event.target.id;
       const isActive = event.target.checked;
       const updatedFilters = { ...this.filters, [inputId]: isActive };

@@ -126,4 +126,7 @@ menu {
 .dialog-enter-active {
   transition: all 0.3s ease-out;
 }
+button {
+  padding: 1rem;
+}
 </style>

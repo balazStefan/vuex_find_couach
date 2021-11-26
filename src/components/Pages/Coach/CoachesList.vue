@@ -6,9 +6,7 @@
     </base-dialog>
     <base-card>
       <coach-filter @change-filter="setFilter"></coach-filter>
-      <base-button @click="loadCoaches(true)" class="hovering"
-        >Refresh</base-button
-      >
+      <base-button @click="loadCoaches(true)">Refresh</base-button>
     </base-card>
     <div v-if="isLoading">
       <base-spinner></base-spinner>
@@ -96,39 +94,35 @@ button {
   margin-bottom: 1.5rem;
 }
 
-.hovering {
-  position: relative;
-  background: white;
-  transition: all 1s ease-in-out;
-  border: outset 3px;
-  box-shadow: none;
-  color: black;
-}
-
-.hovering::before {
-  position: absolute;
+button::before {
   content: "";
-  top: 0;
-  left: 50%;
-  width: 10%;
-  height: 100%;
-  z-index: -1;
-  background: white;
-  transition: all 2.6s ease-in-out;
-  transform-origin: center;
-}
-
-.hovering:hover::before {
-  background: rgb(255, 0, 0);
+  position: absolute;
+  background: rgb(224, 42, 42);
   background: linear-gradient(
-    75deg,
-    rgba(255, 0, 0, 1) 6%,
-    rgba(255, 255, 255, 0) 48%,
-    rgba(247, 0, 30, 0.7682423311121324) 93%
+    107deg,
+    rgba(224, 42, 42, 0.8382703423166141) 17%,
+    rgba(215, 59, 25, 0.465721322708771) 39%,
+    rgba(244, 244, 244, 0.7458333675266982) 74%
   );
-  z-index: -2;
+  top: 0%;
+  left: 0;
+  z-index: -10;
+  width: 3%;
+  height: 100%;
+  transition: all 0.8s ease-in-out;
+}
+button:hover::before {
+  background: rgb(224, 42, 42);
+  background: linear-gradient(
+    107deg,
+    rgba(224, 42, 42, 0.8382703423166141) 17%,
+    rgba(215, 59, 25, 0.465721322708771) 39%,
+    rgba(244, 244, 244, 0.7458333675266982) 74%
+  );
+  top: 0%;
+  left: 0;
+  z-index: -10;
   width: 100%;
-  left: 0%;
-  opacity: 1;
+  height: 100%;
 }
 </style>

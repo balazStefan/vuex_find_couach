@@ -12,7 +12,6 @@ button {
   text-transform: uppercase;
   text-align: center;
   height: max-content;
-  /* box-shadow: 0.4rem 0.2rem #ccc; */
 
   cursor: pointer;
   border: none;

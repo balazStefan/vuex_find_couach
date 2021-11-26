@@ -1,14 +1,13 @@
 <template>
   <div>
     <base-dialog :show="!!error" title="An Error occured" @close="handleError">
-      <!--!! urobí boolean a z trufy urobí false -->
       <p>{{ error }}</p>
     </base-dialog>
     <base-card>
       <h2>All Requests</h2>
     </base-card>
     <base-spinner v-if="isLoading"></base-spinner>
-    <ul v-if="hasRequests && !isLoading">
+    <transition-group tag="ul" v-if="hasRequests && !isLoading">
       <request-item
         v-for="req in receivedRequests"
         :key="req.id"
@@ -17,7 +16,7 @@
         :message="req.message"
         @deleteReq="removeReq"
       ></request-item>
-    </ul>
+    </transition-group>
     <h5 v-show="!hasRequests && !isLoading">
       You haven´t received any requests YET!
     </h5>
@@ -36,7 +35,7 @@ export default {
   },
   computed: {
     receivedRequests() {
-      return this.$store.getters.requests; // over či je dobrý getter
+      return this.$store.getters.requests;
     },
     hasRequests() {
       return this.$store.getters.hasRequests;
@@ -61,7 +60,7 @@ export default {
       const response = await fetch(
         `https://dasdas-b3d79-default-rtdb.firebaseio.com/requests/${coachId}/${id}.json?auth=` +
           token,
-        { method: "DELETE" } //body: JSON.stringify({ id })
+        { method: "DELETE" }
       );
       const responseData = await response.json();
       if (!response.ok) {

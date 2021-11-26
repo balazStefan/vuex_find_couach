@@ -69,7 +69,6 @@ export default {
     submitQuestion() {
       this.validation();
       if (!this.formIsValid) {
-        // ak nie sú nepošle ďalej údaje a vráti
         return;
       }
 

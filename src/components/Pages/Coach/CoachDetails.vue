@@ -35,9 +35,7 @@ export default {
     name() {
       return this.selectedCoach.name;
     },
-    // linkToContact() {
-    //   return this.$route.path + "/" + this.id + "contact";
-    // },
+
     money() {
       return this.selectedCoach.money;
     },
@@ -97,7 +95,6 @@ section {
   width: inherit;
   padding: 3rem;
   background-color: whitesmoke;
-  /* border: outset 5px #ccc; */
 }
 .position {
   display: flex;

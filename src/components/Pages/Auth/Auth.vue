@@ -206,13 +206,4 @@ p {
   );
   color: black;
 }
-/* .colorized {
-  background: rgb(30, 235, 14);
-  background: linear-gradient(
-    17deg,
-    rgba(30, 235, 14, 1) 43%,
-    rgba(233, 233, 233, 0) 47%,
-    rgba(249, 0, 0, 1) 51%
-  );
-} */
 </style>

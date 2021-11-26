@@ -4,7 +4,6 @@ const store = createStore({
   state() {
     return {
       requests: [],
-      // isCoach: false,
       lastFetch: null,
       userId: null,
       token: null,
@@ -43,19 +42,13 @@ const store = createStore({
     isAutentificated(state) {
       return !!state.token;
     },
-    isCoach(state) {
-      return state.isCoach;
-    },
     didAutoLogout(state) {
       return state.didAutoLogout;
     },
-    // afterDelete(state) {
-    //   return state.requests;
-    // },
   },
   mutations: {
     addNewCoach(state, payload) {
-      state.coaches.unshift(payload);
+      state.coaches.shift(payload);
     },
     addRequest(state, payload) {
       state.requests.push(payload);
@@ -78,11 +71,6 @@ const store = createStore({
     setAutoLogout(state) {
       state.didAutoLogout = true;
     },
-    // deleteReq(state, payload) {
-    //   console.log(payload);
-    //   console.log(state.requests);
-    //   state.requests.filter((req) => req.id !== payload);
-    // },
   },
   actions: {
     async loadCoaches(context, payload) {
@@ -126,6 +114,7 @@ const store = createStore({
         money: payload.money,
         types: payload.types,
         description: payload.description,
+        // register: payload.register,
       };
       const token = context.getters.token;
       const response = await fetch(
@@ -136,9 +125,9 @@ const store = createStore({
           body: JSON.stringify(coachData),
         }
       );
-      // const responseData = await response.json();
+
       if (!response.ok) {
-        //error....
+        console.log("ok");
       }
       context.commit("addNewCoach", {
         ...coachData,
