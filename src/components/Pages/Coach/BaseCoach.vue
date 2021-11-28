@@ -58,7 +58,9 @@ footer {
   color: black;
 }
 button {
-  padding: 0.5rem 1rem;
+  /* padding: 1rem 1rem; */
+  font-size: inherit;
+  padding: 0.6rem;
   margin: 1rem 0rem;
 }
 button:nth-child(2) {
@@ -67,11 +69,13 @@ button:nth-child(2) {
 a {
   text-decoration: none;
   color: black;
-  position: relative;
-  z-index: 5;
+  font-size: inherit;
+  font-size: inherit;
+  padding: 0.6rem 0rem;
 }
 
-button::before {
+a::before {
+  font-size: inherit;
   content: "";
   position: absolute;
   background: rgb(224, 121, 42);
@@ -88,7 +92,7 @@ button::before {
   height: 100%;
   transition: all 0.8s ease-in-out;
 }
-button:hover::before {
+a:hover::before {
   background: rgb(224, 121, 42);
   background: linear-gradient(
     107deg,
@@ -101,13 +105,14 @@ button:hover::before {
   z-index: -10;
   width: 100%;
   height: 100%;
+  font-size: inherit;
 }
 
 .active {
-  transition: all 1s;
+  transition: all 0.4s;
 }
 .active:hover {
-  transform: translateY(-5px);
+  background: #e8e8e8;
 }
 </style>
 rem

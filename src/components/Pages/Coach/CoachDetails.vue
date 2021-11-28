@@ -98,7 +98,6 @@ section {
 }
 .position {
   display: flex;
-
   justify-content: flex-end;
 }
 
@@ -136,7 +135,7 @@ button::before {
   z-index: -10;
   width: 3%;
   height: 100%;
-  transition: all 0.8s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 button:hover::before {
   background: rgb(224, 121, 42);

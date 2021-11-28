@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header">
     <h1>
       <router-link class="logo" to="/">Find a coach</router-link>
     </h1>
@@ -23,7 +23,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/auth" class="hoverNav, login" v-if="!isAuth"
+        <router-link to="/auth" class="hoverNav login" v-if="!isAuth"
           >Log In</router-link
         >
       </li>
@@ -72,14 +72,12 @@ export default {
 //class="notifi"
 </script>
 <style scoped>
-div {
+/* div {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-h1 {
-  color: white;
-}
+} */
+
 ul {
   display: flex;
   justify-content: flex-end;
@@ -136,14 +134,6 @@ span {
   border: none;
   box-shadow: 0.4rem 0.2rem #dc143c;
 }
-.l {
-  grid-area: l;
-  grid-column: 1/3;
-}
-.n {
-  grid-area: n;
-  grid-column: 5/12;
-}
 
 /******** HOVERING *************/
 
@@ -155,7 +145,7 @@ span {
   width: max-content;
   font-size: 2.5rem;
   background: transparent;
-  color: white;
+  color: black;
   border: none;
   box-shadow: none;
   /* padding: 0rem; */
@@ -164,11 +154,10 @@ span {
 .logo:active,
 .logo:hover,
 .logo:focus {
-  color: white;
-  background: transparent;
+  color: black;
   border-radius: 0.8rem;
   border: none;
-  text-decoration: underline whitesmoke;
+  text-decoration: underline #555d50;
 }
 .logout,
 .login {
@@ -211,6 +200,83 @@ span {
   }
   100% {
     transform: rotateZ(0deg);
+  }
+}
+
+.header {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  min-width: 100%;
+}
+/* @media only screen and (max-width: 800px) {
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    align-items: center;
+  }
+  /* .logo {
+    display: none;
+  } */
+
+/* @media only screen and (max-width: 360px) {
+  .logo {
+    display: none;
+  }
+  .header {
+    width: 360px;
+    border: 1px solid black;
+    margin: auto;
+  }
+  a {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+  ul {
+    gap: 1rem;
+  }
+} */
+
+@media only screen and (min-width: 200px) {
+  .header {
+    width: 20rem;
+  }
+}
+@media only screen and (min-width: 280px) {
+  .header {
+    width: 20rem;
+  }
+}
+@media only screen and (min-width: 360px) {
+  .header {
+    width: 35rem;
+  }
+}
+@media only screen and (min-width: 400px) {
+  .header {
+    width: 40rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header {
+    width: 55rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .header {
+    width: 60rem;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .header {
+    width: 65rem;
+  }
+}
+@media only screen and (min-width: 1048px) {
+  .header {
+    width: 65rem;
   }
 }
 </style>

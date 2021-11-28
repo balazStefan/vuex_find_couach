@@ -47,7 +47,7 @@
             placeholder=" 10.99 "
             class="money"
             min="4.99"
-            max="100"
+            max="999"
             step="0.01"
             lang="us"
             id="money"
@@ -59,7 +59,7 @@
         </label>
 
         <span v-if="!inputMoney.isValid" :class="{ isInvalid: 'isInvalid' }">
-          You must choose money... min. is 5€
+          You must choose money... min. is 5€ and max 999€
         </span>
 
         <div class="controls">
@@ -150,7 +150,11 @@ export default {
         this.inputMsg.isValid = false;
         this.formIsValid = false;
       }
-      if (!this.inputMoney.value || this.inputMoney.value < 5) {
+      if (
+        !this.inputMoney.value ||
+        this.inputMoney.value < 5 ||
+        this.inputMoney.value >= 1000
+      ) {
         this.inputMoney.isValid = false;
         this.formIsValid = false;
       }
@@ -265,7 +269,7 @@ button::before {
   background: red;
 
   color: white;
-  transition: all 0.7s ease-in;
+  transition: all 0.3s ease-in;
 }
 button:hover::before {
   content: "";
@@ -292,7 +296,7 @@ button::after {
   z-index: -1;
   background: red;
   color: white;
-  transition: all 0.7s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 button:hover::after {

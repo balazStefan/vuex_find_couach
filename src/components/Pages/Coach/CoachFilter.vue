@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="filtering">
     <h1 class="typing">Find your coach</h1>
     <form>
       <label for="Frontend" class="controls-header">
@@ -35,7 +35,9 @@
   </div>
 </template>
 <script>
+// import BaseCard from "../../UI/BaseCard.vue";
 export default {
+  // components: { BaseCard },
   emits: ["change-filter"],
   data() {
     return {
@@ -59,7 +61,11 @@ export default {
 };
 </script>
 <style scoped>
-div {
+input {
+  width: 1rem;
+}
+.filtering {
+  /* width: 75rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,6 +122,44 @@ label {
   }
   50% {
     border-color: #555d50;
+  }
+}
+/* @media only screen and (min-width: 200px) {
+  .filtering {
+    width: 35rem;
+  }
+}
+ */
+
+@media only screen and (min-width: 280px) {
+  .filtering {
+    width: 45rem;
+  }
+}
+
+@media only screen and (min-width: 350px) {
+  .filtering {
+    width: 45rem;
+  }
+}
+@media only screen and (min-width: 766px) {
+  .filtering {
+    width: 55rem;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .filtering {
+    width: 60rem;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .filtering {
+    width: 65rem;
+  }
+}
+@media only screen and (min-width: 1048px) {
+  .filtering {
+    width: 65rem;
   }
 }
 </style>

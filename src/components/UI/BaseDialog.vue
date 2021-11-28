@@ -65,7 +65,7 @@ export default {
 
 dialog {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: inherit;
   top: 20vh;
   left: 10%;
   width: 80%;

@@ -1,21 +1,19 @@
 <template>
-  <div class="wrapper">
+  <div class="griding">
     <the-header class="h"></the-header>
     <router-view v-slot="slotProps" class="m">
       <transition name="route" mode="out-in">
         <component :is="slotProps.Component"></component
       ></transition>
-      <the-footer class="f"></the-footer>
     </router-view>
   </div>
 </template>
 
 <script>
 import TheHeader from "./components/UI/TheHeader.vue";
-import TheFooter from "./components/UI/TheFooter.vue";
 
 export default {
-  components: { TheHeader, TheFooter },
+  components: { TheHeader },
   created() {
     this.$store.dispatch("autoLogIn");
   },
@@ -51,37 +49,18 @@ div {
   width: 100%;
   font-family: sans-serif;
 }
-html {
+/* html {
   margin: 0;
   width: 100%;
   height: 100%;
 }
+
 body {
-  background: rgb(255, 170, 0);
-  background: linear-gradient(
-    167deg,
-    rgba(255, 170, 0, 1) 3%,
-    rgba(1, 1, 13, 1) 42%,
-    rgba(26, 229, 203, 1) 54%,
-    rgba(29, 29, 255, 1) 57%,
-    rgba(5, 5, 29, 0.919502835313813) 70%,
-    rgba(5, 5, 29, 0.9335084375547094) 83%
-  );
-
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-.wrapper {
   width: 100%;
-  display: grid;
-  grid-auto-columns: minmax(100px, auto);
-  grid-template-areas:
-    "h h h h h h h h h h h"
-    "m m m m m m m m m m m"
-    "f f f f f f f f f f f";
-}
-/*--------------------------------ANIMACIA:-route-styling ---------------------------*/
+  background: white;
+} */
 
+/*--------------------------------ANIMACIA:-route-styling ---------------------------*/
 .route-enter-from {
   opacity: 0;
   transform: translateY(-30px);
@@ -102,18 +81,21 @@ body {
   opacity: 1;
   transform: translateY(0px);
 }
+.griding {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "h h   "
+    "m m ";
+}
 .h {
   grid-area: h;
-  grid-column: 1/12;
+  grid-column: 1/3;
   grid-row: 1/2;
 }
 .m {
   grid-area: m;
-  grid-column-start: 2;
-  grid-column-end: 11;
+  grid-column: 1/-1;
   grid-row: 2/2;
-}
-.f {
-  grid-area: f;
 }
 </style>

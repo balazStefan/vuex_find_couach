@@ -20,8 +20,8 @@
 <style scoped>
 svg {
   position: absolute;
-  top: -7px;
-  right: -7px;
+  top: -0.7rem;
+  right: -0.7rem;
   fill: lime;
   background-color: transparent;
 }

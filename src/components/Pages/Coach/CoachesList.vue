@@ -1,7 +1,6 @@
 <template>
   <div>
     <base-dialog :show="!!error" title="An Error occured" @close="handleError">
-      <!--!! urobí boolean a z trufy urobí false -->
       <p>{{ error }}</p>
     </base-dialog>
     <base-card>
@@ -87,7 +86,7 @@ export default {
 </script>
 <style scoped>
 button {
-  width: 10rem;
+  font-size: inherit;
   padding: 0.6rem;
   align-self: flex-start;
   margin-left: 2rem;
@@ -109,7 +108,7 @@ button::before {
   z-index: -10;
   width: 3%;
   height: 100%;
-  transition: all 0.8s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 button:hover::before {
   background: rgb(224, 42, 42);

@@ -114,7 +114,6 @@ const store = createStore({
         money: payload.money,
         types: payload.types,
         description: payload.description,
-        // register: payload.register,
       };
       const token = context.getters.token;
       const response = await fetch(
