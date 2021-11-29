@@ -58,7 +58,7 @@ footer {
   color: black;
 }
 button {
-  /* padding: 1rem 1rem; */
+  padding: 1rem 1rem;
   font-size: inherit;
   padding: 0.6rem;
   margin: 1rem 0rem;
@@ -114,5 +114,13 @@ a:hover::before {
 .active:hover {
   background: #e8e8e8;
 }
+
+@media only screen and (min-width: 320px) {
+  p {
+    font-size: 10px;
+  }
+  h3 {
+    font-size: 15px;
+  }
+}
 </style>
-rem

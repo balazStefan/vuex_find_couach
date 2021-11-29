@@ -12,7 +12,6 @@
           >Register as a coach</router-link
         >
       </li>
-
       <li>
         <router-link to="/requests" class="notifi hoverNav" v-show="isAuth"
           >Request List
@@ -22,6 +21,7 @@
           </span>
         </router-link>
       </li>
+
       <li>
         <router-link to="/auth" class="hoverNav login" v-if="!isAuth"
           >Log In</router-link
@@ -69,23 +69,24 @@ export default {
     },
   },
 };
-//class="notifi"
 </script>
 <style scoped>
-/* div {
+.header {
+  /* max-width: max-content; */
+  /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
-  width: 100%;
-} */
-
+  background: darkblue;
+}
 ul {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: 3rem;
   box-sizing: border-box;
   padding: 0rem;
   list-style: none;
+  /* background: burlywood; */
+  max-width: max-content;
 }
 li {
   min-width: max-content;
@@ -137,27 +138,23 @@ span {
 
 /******** HOVERING *************/
 
-/* .lastOne {
-  margin-right: 12rem;
-} */
 .logo {
-  display: flex;
+  /* display: flex; */
   width: max-content;
   font-size: 2.5rem;
   background: transparent;
-  color: black;
+  color: white;
   border: none;
   box-shadow: none;
-  /* padding: 0rem; */
-  /* margin-left: 1rem; */
+  /* border: 1px solid black; */
 }
 .logo:active,
 .logo:hover,
 .logo:focus {
-  color: black;
+  color: white;
   border-radius: 0.8rem;
   border: none;
-  text-decoration: underline #555d50;
+  text-decoration: underline white;
 }
 .logout,
 .login {
@@ -190,7 +187,6 @@ span {
   }
   25% {
     transform: rotateZ(25deg);
-    /* transform: rotateY(15deg); */
   }
   50% {
     transform: rotateZ(0deg);
@@ -203,80 +199,210 @@ span {
   }
 }
 
-.header {
-  /* border: 1px solid black; */
-  display: flex;
-  justify-content: space-between;
-  min-width: 100%;
-}
-/* @media only screen and (max-width: 800px) {
-  ul {
+@media only screen and (max-width: 560px) {
+  .header {
     display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
     align-items: center;
   }
-  /* .logo {
-    display: none;
-  } */
-
-/* @media only screen and (max-width: 360px) {
   .logo {
-    display: none;
+    text-align: center;
+    /* border: 2px solid gold; */
+    margin-right: 35px;
   }
-  .header {
-    width: 360px;
-    border: 1px solid black;
-    margin: auto;
+
+  ul {
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* border: 2px solid orangered; */
   }
   a {
-    font-size: 0.8rem;
-    padding: 1rem;
+    padding: 10px;
+    max-width: fit-content;
+    text-align: center;
+    min-width: 150px;
   }
+}
+@media only screen and (max-width: 320px) {
+  .header {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    text-align: center;
+    /* border: 2px solid gold; */
+    margin: 5px;
+  }
+
   ul {
-    gap: 1rem;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 5px;
+    /* border: 2px solid orangered; */
+  }
+  a {
+    padding: 10px;
+    max-width: fit-content;
+    text-align: center;
+    min-width: 150px;
+  }
+}
+/* @media only screen and (min-width: 320px) {
+  ul {
+    max-width: 28rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 20px;
   }
 } */
+@media only screen and (min-width: 375px) {
+  ul {
+    max-width: 34rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 20px;
+  }
+}
+@media only screen and (min-width: 414px) {
+  ul {
+    max-width: 37rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 20px;
+  }
+}
+@media only screen and (min-width: 568px) {
+  .header {
+    justify-content: space-between;
+  }
+  ul {
+    max-width: 45rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    flex-direction: row;
+    /* border: 2px solid white; */
+    flex-wrap: wrap;
+    margin-right: 0;
+  }
+  .logo {
+    /* border: 1px solid green; */
+    max-width: fit-content;
+    /* background: chartreuse; */
+    text-align: center;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 2rem;
+    margin-top: 1rem; */
+  }
+  a {
+    /* max-width: fit-content; */
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 640px) {
+  .header {
+    justify-content: space-around;
+  }
+  ul {
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+}
 
-@media only screen and (min-width: 200px) {
+@media only screen and (min-width: 736px) {
   .header {
-    width: 20rem;
+    justify-content: space-around;
   }
-}
-@media only screen and (min-width: 280px) {
-  .header {
-    width: 20rem;
+  ul {
+    max-width: 45rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    flex-direction: row;
+    /* border: 2px solid white; */
+    flex-wrap: nowrap;
+    margin-left: -100px;
   }
-}
-@media only screen and (min-width: 360px) {
-  .header {
-    width: 35rem;
+  .logo {
+    /* border: 1px solid green; */
+    max-width: fit-content;
+    /* background: chartreuse; */
+    text-align: center;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 2rem;
+    margin-top: 1rem; */
   }
-}
-@media only screen and (min-width: 400px) {
-  .header {
-    width: 40rem;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .header {
-    width: 55rem;
+  a {
+    /* max-width: fit-content; */
+    font-size: 1rem;
   }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 812px) {
   .header {
-    width: 60rem;
+    justify-content: space-evenly;
+  }
+  ul {
+    max-width: 45rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    flex-direction: row;
+    /* border: 2px solid white; */
+    flex-wrap: wrap;
+    margin-right: 0;
+  }
+  .logo {
+    /* border: 1px solid green; */
+    /* max-width: fit-content; */
+    /* background: chartreuse; */
+    text-align: center;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 2rem;
+    margin-top: 1rem; */
+  }
+  a {
+    /* max-width: fit-content; */
+    font-size: 1rem;
+  }
+  .header {
+    justify-content: space-around;
+  }
+  ul {
+    flex-wrap: nowrap;
+    gap: 20px;
   }
 }
-@media only screen and (min-width: 900px) {
-  .header {
-    width: 65rem;
+/*
+/* @media only screen and (min-width: 1024px) {
+  ul {
+    max-width: 65rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 20px;
   }
-}
-@media only screen and (min-width: 1048px) {
+} */
+@media only screen and (min-width: 1366px) {
   .header {
-    width: 65rem;
+    justify-content: space-between;
+  }
+  .logo {
+    min-width: 250px;
+  }
+  ul {
+    max-width: 75rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 20px;
   }
 }
 </style>

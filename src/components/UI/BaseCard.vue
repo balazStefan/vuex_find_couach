@@ -9,7 +9,7 @@ export default {};
 </script>
 <style scoped>
 .wrapp {
-  width: 75rem;
+  max-width: 75rem;
   height: fit-content;
   margin: 5rem auto;
   color: #555d50;
@@ -17,47 +17,72 @@ export default {};
   border-radius: 0.9rem;
   border: 0.1rem solid #ccc;
   background-color: white;
+  /* border: 2px solid black; */
 }
 
-@media only screen and (min-width: 200px) {
+@media only screen and (min-width: 320px) {
   .wrapp {
-    width: 45rem;
+    max-width: 28rem;
+    /* margin: 0rem;
+    margin-top: 1rem;
+    margin-left: 2rem; */
   }
 }
-@media only screen and (min-width: 280px) {
+@media only screen and (min-width: 375px) {
   .wrapp {
-    width: 45rem;
+    max-width: 34rem;
+    /* margin: 0rem;
+    margin-top: 1rem;
+    margin-left: 2rem; */
   }
 }
-@media only screen and (min-width: 350px) {
+@media only screen and (min-width: 414px) {
   .wrapp {
-    width: 45rem;
+    max-width: 37rem;
+    /* margin: 0rem;
+    margin-top: 1rem;
+    margin-left: 2rem; */
   }
 }
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 568px) {
   .wrapp {
-    width: 45rem;
+    max-width: 50rem;
+    /* margin: 0rem;
+    margin-top: 1rem;
+    margin-left: 2rem; */
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 667px) {
   .wrapp {
-    width: 55rem;
+    max-width: 60rem;
+    /* margin: 0rem;
+    margin-top: 1rem;
+    margin-left: 2rem; */
   }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 736px) {
   .wrapp {
-    width: 60rem;
+    max-width: 60rem;
+    /* margin: 0rem;
+    margin-top: 1rem;
+    margin-left: 2rem; */
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .wrapp {
-    width: 65rem;
+    max-width: 65rem;
+    /* margin: 0rem;
+    margin-top: 1rem;
+    margin-left: 2rem; */
   }
 }
-@media only screen and (min-width: 1048px) {
+@media only screen and (min-width: 1366px) {
   .wrapp {
-    width: 65rem;
+    max-width: 75rem;
+    /* margin: 0rem;
+    margin-top: 1rem;
+    margin-left: 2rem; */
   }
 }
 </style>

@@ -29,4 +29,13 @@ span {
   background-color: lightskyblue;
   color: #555d50;
 }
+
+@media only screen and (min-width: 320px) {
+  span {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.5rem;
+  }
+}
 </style>

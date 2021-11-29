@@ -1,7 +1,7 @@
 <template>
-  <div class="griding">
-    <the-header class="h"></the-header>
-    <router-view v-slot="slotProps" class="m">
+  <div>
+    <the-header></the-header>
+    <router-view v-slot="slotProps" class="flexing">
       <transition name="route" mode="out-in">
         <component :is="slotProps.Component"></component
       ></transition>
@@ -49,16 +49,9 @@ div {
   width: 100%;
   font-family: sans-serif;
 }
-/* html {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
-
 body {
   width: 100%;
-  background: white;
-} */
+}
 
 /*--------------------------------ANIMACIA:-route-styling ---------------------------*/
 .route-enter-from {
@@ -81,21 +74,13 @@ body {
   opacity: 1;
   transform: translateY(0px);
 }
-.griding {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas:
-    "h h   "
-    "m m ";
+.flexing {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
 }
-.h {
-  grid-area: h;
-  grid-column: 1/3;
-  grid-row: 1/2;
-}
-.m {
-  grid-area: m;
-  grid-column: 1/-1;
-  grid-row: 2/2;
+body {
+  /* border: 1px solid red; */
 }
 </style>

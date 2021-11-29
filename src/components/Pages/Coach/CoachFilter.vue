@@ -65,7 +65,7 @@ input {
   width: 1rem;
 }
 .filtering {
-  /* width: 75rem; */
+  max-width: 75rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,42 +124,13 @@ label {
     border-color: #555d50;
   }
 }
-/* @media only screen and (min-width: 200px) {
-  .filtering {
-    width: 35rem;
-  }
-}
- */
 
-@media only screen and (min-width: 280px) {
-  .filtering {
-    width: 45rem;
+@media only screen and (min-width: 320px) {
+  .typing {
+    font-size: 20px;
   }
-}
-
-@media only screen and (min-width: 350px) {
-  .filtering {
-    width: 45rem;
-  }
-}
-@media only screen and (min-width: 766px) {
-  .filtering {
-    width: 55rem;
-  }
-}
-@media only screen and (min-width: 800px) {
-  .filtering {
-    width: 60rem;
-  }
-}
-@media only screen and (min-width: 900px) {
-  .filtering {
-    width: 65rem;
-  }
-}
-@media only screen and (min-width: 1048px) {
-  .filtering {
-    width: 65rem;
+  form {
+    font-size: 10px;
   }
 }
 </style>

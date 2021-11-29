@@ -21,4 +21,11 @@ button {
   position: relative;
   z-index: 6;
 }
+
+@media only screen and (min-width: 320px) {
+  button {
+    font-weight: 600;
+    font-size: 6px;
+  }
+}
 </style>
